@@ -17,6 +17,29 @@ Changing an **Approved** decision requires explicit human approval. Record the r
 
 Zehrty is the public identity of Manuel Amado and the connective tissue across his software projects, professional presence, technical experiments, and ongoing growth. The brand supports the work; it does not pretend to be a separate company or allow style to eclipse substance.
 
+## Positioning and factual narrative — Approved
+
+**Primary positioning (Spanish source):**
+
+> Soy desarrollador enfocado en inteligencia artificial y automatización. Construyo productos reales para resolver problemas concretos mientras sigo creciendo como ingeniero.
+
+Zehrtydev is a developer focused on artificial intelligence and automation who builds real products to solve concrete problems while continuing to grow as an engineer. Preserve this meaning; do not substitute generic startup, agency, consultant, or unsupported senior-engineer positioning.
+
+**Short bio (Spanish source):**
+
+> Estudio Ingeniería de Sistemas en la UNAD mientras me formo en Programación e Inteligencia Artificial en Campuslands y continúo aprendiendo inglés. Trabajo como Auxiliar de Sistemas en Petrocasinos S.A. Me atraen los proyectos que me obligan a salir de lo conocido, investigar y aprender mientras construyo soluciones reales.
+
+Do not infer seniority, years of experience, completed degrees, certifications, job responsibilities, or other professional claims from this source.
+
+## Name and wordmark — Approved
+
+- The visible V1 textual wordmark is **Zehrtydev**.
+- Sora is its typographic foundation.
+- It may function without a separate symbol.
+- `Zehrty` may remain in conversational references to the person or public identity, but it must not replace `Zehrtydev` in the website's primary brand treatment.
+
+A symbol, monogram, custom lettering, ligature, or logo redesign is not approved. Any future exploration of those elements remains **Proposed** until explicitly approved.
+
 ## Desired perception — Approved
 
 Zehrty should feel:
@@ -53,7 +76,8 @@ The experience should feel engineered rather than decorated.
 
 ### Palette usage rules — Approved
 
-- Dark tones dominate the experience; this is a dark-first identity.
+- V1 is dark-only; no light-mode toggle or parallel light theme belongs in V1.
+- Dark tones dominate the experience.
 - Performance Orange guides attention and indicates priority. It must not flood the interface or become a decorative wash.
 - Use one accent language. Do not introduce competing brand accents.
 - Preserve clear foreground/background contrast and test actual pairs at implementation time.
@@ -112,7 +136,8 @@ The experience should feel engineered rather than decorated.
 - Shadow and elevation strategy.
 - Image treatment, crop behavior, overlays, and art direction.
 - Icon family, stroke style, and size tokens.
-- Final Zehrty wordmark or symbol and its usage rules.
+- Exact typographic treatment and usage rules for the approved `Zehrtydev` wordmark.
+- Whether a future symbol or monogram should be explored; no such mark is approved for V1.
 
 ## Tone and voice — Approved
 
@@ -136,6 +161,13 @@ Write with calm confidence, technical clarity, and specificity.
 - Overuse hacker, automotive, military, or sci-fi metaphors.
 - Describe experiments as finished products.
 
+## Calls to action — Approved
+
+- Primary: **“Explorar mi trabajo”**
+- Secondary: **“Contactarme”**
+
+Evidence and work take priority over contact. The website language strategy remains **Under review**, so these approved Spanish sources must not be treated as approval for a Spanish-only architecture.
+
 ## Anti-patterns — Approved
 
 - Generic purple/pink AI gradients.
@@ -151,7 +183,7 @@ Write with calm confidence, technical clarity, and specificity.
 
 ## Approved decisions vs. proposals
 
-The palette, Sora/Inter roles, brand role, desired perception, personality, voice, visual direction, and anti-patterns above are **Approved**.
+The positioning, factual short bio, `Zehrtydev` wordmark, dark-only V1 theme, CTAs, palette, Sora/Inter roles, brand role, desired perception, personality, voice, visual direction, and anti-patterns above are **Approved**.
 
 Current **Proposed** implementation principles derived from the local design guidance are:
 

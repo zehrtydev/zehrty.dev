@@ -18,6 +18,17 @@ The eventual experience should:
 - Remain fast, stable, and usable on constrained devices and networks.
 - Support future projects without making V1 feel empty or overbuilt.
 
+## Approved V1 framing
+
+- **Positioning:** developer focused on artificial intelligence and automation, building real products for concrete problems while continuing to grow as an engineer. Preserve the approved Spanish source in `PROJECT.md` and `BRAND-FOUNDATION.md`.
+- **Primary CTA:** “Explorar mi trabajo”.
+- **Secondary CTA:** “Contactarme”. Evidence/work must remain visually prior to contact.
+- **Theme:** dark-only. Do not propose a V1 light-mode toggle.
+- **Wordmark:** visible textual treatment `Zehrtydev`, using Sora; no symbol is required.
+- **Architecture:** hybrid. Homepage sections are Identity / Hero, Selected Work, About, Contact, and Footer. Moni has a dedicated case study at `/projects/moni`. A `/projects` index waits until project volume justifies it.
+- **Contact:** GitHub and LinkedIn URLs remain pending; email is `soporte@zehrty.dev`. Do not invent links or add unapproved channels.
+- **Language:** **Under review**. Approved Spanish source copy does not decide whether the final site is Spanish-only, English-only, or bilingual.
+
 ## Expected feeling
 
 The approved emotional register is controlled intensity: dark, precise, confident, technical, premium, and quietly aggressive. Visitors should sense an engineered system with a human point of view.
@@ -72,17 +83,19 @@ Accessibility is a design input and release gate.
 
 Project presentation should behave like evidence, not a gallery tile.
 
-For Moni, explore a narrative that can accommodate:
+For Moni, use the verified narrative in `PROJECT.md`. The presentation must make the following legible:
 
-- problem and user context;
-- Zehrty's role and contribution;
-- constraints and requirements;
-- key product and engineering decisions;
-- architecture or process only where it clarifies the story;
-- verified outcomes, current status, and lessons;
-- authentic screenshots, diagrams, or artifacts with captions and accessible alternatives.
+- the expense-entry friction that led to WhatsApp-based capture;
+- deterministic parsing before AI fallback;
+- structured extraction followed by explicit user review and confirm, correct, or cancel paths;
+- Manuel's end-to-end product design, architecture, and full-stack development, with AI-assisted development;
+- the transition from personal tool to multi-user product and the edge cases that followed;
+- the deployment journey from a local computer and Vercel testing to a production VPS;
+- verified use of WhatsApp, Supabase, Resend, and a web dashboard;
+- current production status, 6 real users close to Manuel, an operational core flow, dashboard access, and continued evolution;
+- OCR receipt reading, custom categories, and feedback-led additions only as future ideas, never shipped features.
 
-Do not invent missing project data. Avoid reducing Moni to a logo, screenshot, technology-chip collection, or vague marketing paragraph. The exact case-study format and depth remain open until the source content and assets are approved.
+Do not present Moni as AI-only, imply automatic persistence without human confirmation, claim that AI built it, invent technologies, or project future user growth as an outcome. Avoid reducing it to a logo, screenshot, technology-chip collection, or vague marketing paragraph. Exact case-study composition, depth, and media treatment remain open; authentic screenshots and artifacts still require approval.
 
 ## Motion philosophy
 
@@ -126,32 +139,25 @@ This architecture is **Proposed**, not implemented. It should prevent raw values
 
 The following require exploration and human approval before implementation:
 
-- Exact homepage composition and opening message.
+- Exact homepage composition and visual treatment of the approved opening message.
 - Navigation treatment.
-- Hero composition and primary call to action.
+- Hero composition and CTA presentation; the CTA wording and priority are already approved.
 - Project-card or project-narrative system.
 - Exact spacing and typography scales.
 - Content width and breakpoint strategy.
 - Border, divider, radius, shadow, and elevation strategy.
 - Exact motion system and whether page transitions are warranted.
 - Icon library and icon style; do not add one until a real need is established.
-- One-page sections versus separate routes or a hybrid structure.
-- Final Zehrty wordmark or symbol.
+- Exact transition between homepage sections and the dedicated Moni case study within the approved hybrid architecture.
+- Exact typographic treatment of the approved `Zehrtydev` wordmark; whether a future symbol or monogram should be explored remains optional and **Proposed**.
 - Photography, screenshot, illustration, diagram, and texture direction.
-- Light-theme support; the identity is dark-first, but the product requirement has not been decided.
-- Contact method, social/profile destinations, and analytics.
-- Moni's final content, assets, metrics, links, and case-study depth.
+- Website language strategy: Spanish-only, English-only, or bilingual.
+- GitHub and LinkedIn destination URLs, analytics, and any contact behavior beyond the approved email link.
+- Moni's approved media, public product links, and exact case-study depth.
 - Whether future writing, experiments, or a career timeline belong in navigation.
 
-## Design-phase entry criteria
+## Design-phase status
 
-Before visual design begins, obtain human approval or verified source material for:
+Visual exploration may proceed because positioning, biography, CTA priority, V1 theme policy, hybrid architecture, wordmark, Moni's core narrative, and permitted contact channels are now Approved. Remaining content gaps—especially media, project destinations, GitHub and LinkedIn URLs, and language strategy—must stay visible and must not be filled by invention.
 
-- Zehrty's final positioning statement and preferred biography details.
-- Moni's accurate project narrative, role, status, outcomes, media, and public links.
-- The desired primary visitor action and approved contact destinations.
-- Any existing Zehrty logo/wordmark assets and whether they may be evolved.
-- Whether the approved dark-first direction means dark-only for V1.
-- Which candidate information architecture should be explored first.
-
-Once these inputs exist, create alternatives inside the approved foundation, evaluate accessibility and performance implications, and record selected proposals as approved before implementation.
+Create alternatives only inside the approved foundation, evaluate accessibility and performance implications, and keep every new design choice **Proposed** until the human owner approves it.
