@@ -2,7 +2,7 @@
 
 ## Status and purpose
 
-This document compares three **Proposed** visual and compositional directions for Zehrtydev. They are not separate brands, final designs, implementation specifications, or approval records. No direction or newly described design choice becomes **Approved** until the human owner selects it.
+This document preserves the three explored visual and compositional directions and records the human selection. **Direction A — Editorial Performance is Approved as the primary direction.** Directions B and C remain exploration history and reference; they are not co-equal directions or implementation specifications.
 
 The exploration applies the local brand, design-system, UI-styling, and UI/UX guidance as advisory input. Existing Approved decisions remain authoritative whenever generic guidance conflicts.
 
@@ -23,9 +23,9 @@ Every direction preserves:
 - semantic structure, logical reading order, keyboard operation, visible focus, WCAG 2.2 AA contrast, useful alternatives, non-color cues, mobile-first reflow, and reduced-motion support;
 - static-first delivery, minimal client JavaScript, reserved media dimensions, and restrained effects.
 
-Exact scales, values, states, and component decisions not already Approved remain **Proposed** or **Under review**. The directions deliberately describe systems and ranges rather than arbitrary token values.
+This document retains the earlier directional reasoning rather than duplicating implementation values. The reviewed scales, states, and composition rules are now Approved in `DESIGN-SYSTEM.md`, which supersedes exploratory ranges wherever they differ.
 
-## Direction A — Editorial Performance
+## Direction A — Editorial Performance — Approved
 
 ### 1. Core idea
 
@@ -41,15 +41,15 @@ The page begins with a spacious identity field, transitions quickly into an over
 
 ### 4. Hero concept
 
-The approved positioning acts as the primary visual object, with `Zehrtydev` clearly present in the header and a restrained focus descriptor nearby. The two CTAs sit after the positioning, with “Explorar mi trabajo” unmistakably dominant and “Contactarme” quieter. A small, factual orientation line may indicate AI, automation, and current growth, but it must not repeat or inflate the statement.
+Use a split hero. The primary side carries the approved positioning, with “Explorar mi trabajo” unmistakably dominant and “Contactarme” quieter. The secondary contextual column is fixed in meaning: `FOCUS — IA / Automatización`, `CURRENT — Construyendo productos reales`, and `STATUS — Creciendo como ingeniero`. It provides context and must not become dashboard metadata or decorative telemetry. English adapts these labels and values naturally.
 
 ### 5. Navigation concept
 
-A slim, text-first top navigation pairs the wordmark with homepage anchors and a direct route to Moni. It may be statically positioned or modestly sticky; either behavior is **Proposed**. Labels remain explicit, and a compact mobile disclosure replaces any attempt to compress the full desktop composition.
+A quietly sticky, text-first desktop navigation uses `Zehrtydev | Trabajo | Sobre mí | Contacto | ES / EN`. The wordmark links to home/top; Trabajo, Sobre mí, and Contacto target the corresponding homepage sections. Moni remains reachable through Selected Work and receives no redundant permanent item. There is no heavy blur, glassmorphism, large shadow, or permanent orange Contact button. Mobile uses a conventional accessible menu when needed and keeps the language switch accessible.
 
 ### 6. Selected Work / Moni presentation
 
-Moni appears as a technical editorial feature rather than a card. The homepage preview leads with the concrete problem, shows the WhatsApp-to-structured-data flow, states Manuel's role, and surfaces verified status as supporting evidence. A clear link continues to `/projects/moni`, where the story can unfold in chapters: friction, product concept, parsing and confirmation, multi-user evolution, deployment learning, current status, and future ideas visibly marked as unshipped.
+Moni appears as a mini case study rather than a card. The homepage shows the concrete expense-capture problem, why WhatsApp reduces friction, an example such as `10000 en comida`, a simplified flow, Manuel's role, verified current status, and a clear continuation to `/projects/moni`. The route carries the deeper engineering and learning narrative.
 
 ### 7. About treatment
 
@@ -65,7 +65,7 @@ Use a stable underlying grid with editorial spans that vary by narrative purpose
 
 ### 10. Surface / border / radius philosophy
 
-Prefer page fields and sectional rules over a stack of cards. Graphite surfaces appear only when they group genuine evidence or media. Borders are fine and structural; radii are square or subtly clipped rather than soft and friendly. The exact radius and border hierarchy remain **Proposed**.
+Deep Black dominates. Prefer page fields, spacing, hierarchy, and Steel Gray structural rules over a stack of cards. Graphite surfaces appear only when they group genuine evidence or media. Geometry is predominantly square; subtle clipped or diagonal details may appear selectively when they clarify composition. Shadows are exceptional rather than standard.
 
 ### 11. Typography behavior using Sora + Inter
 
@@ -77,11 +77,11 @@ Orange marks the primary CTA, focus treatment, selected links, and at most a sma
 
 ### 13. Image / screenshot / diagram treatment
 
-Authentic screenshots may be given large, editorial placements with captions that explain what each image proves. The parsing and confirmation workflow is a strong candidate for one restrained diagram. Media should use consistent framing and reserved aspect ratios; decorative stock imagery and unsupported mockups are excluded.
+The homepage uses at most one strong authentic product screenshot and one clear workflow diagram. Screenshots receive clean framing and captions that explain what they prove; exaggerated device mockups, 3D frames, glow, and glass are excluded. WhatsApp media protects personal information. A faithful demo may be used only when it is disclosed and not misrepresented as an authentic user conversation. The workflow reads: WhatsApp message → deterministic parsing → AI fallback if needed → structured interpretation → confirm / correct / cancel → registration. The case study may add further approved media.
 
 ### 14. Motion philosophy
 
-Motion is limited to interaction feedback and, if approved, one or two gentle hierarchy cues per view. No page-flip, parallax, split-letter, or scroll-choreography treatment is carried forward from generic editorial guidance. Reduced motion presents the same hierarchy immediately with no missing information.
+Motion is limited to subtle hover/focus feedback, short color/border/opacity transitions, very small useful movement, and potentially one restrained selected-content reveal. Parallax, kinetic typography, ambient animation, theatrical page transitions, scroll hijacking, and large entrance choreography are excluded. Reduced motion removes nonessential movement and presents the same hierarchy immediately.
 
 ### 15. Mobile adaptation
 
@@ -112,18 +112,11 @@ The direction is inherently light if it uses native typography, CSS grid, simple
 
 Generic masonry portfolios, fashion-editorial emptiness, serif substitution, obligatory pull quotes, large decorative photography, animated typography, or treating every section as a poster would break the fit. The project cannot become a sequence of dramatic headlines with little proof.
 
-### 21. Under review decisions this direction would require us to approve
+### 21. Approved implementation handoff
 
-- The exact hero arrangement and degree of asymmetry.
-- Static versus modestly sticky navigation.
-- The chapter model and homepage depth of the Moni feature.
-- Type scale, measures, spacing rhythm, and breakpoint behavior.
-- Mostly square versus subtly clipped surfaces.
-- Screenshot framing, diagram style, and approved media inventory.
-- Minimal motion level and its reduced-motion equivalent.
-- Final website language strategy.
+The exact grid proportions, type scale, measures, spacing rhythm, breakpoint behavior, border and cut rules, focus and interaction states, motion tokens, optional scarce reveal, and media-container rules have completed human review and are Approved in `DESIGN-SYSTEM.md`. Selection of privacy-safe authentic Moni media remains a content input, not a Design System approval blocker.
 
-## Direction B — Engineered Grid
+## Direction B — Engineered Grid — Exploration reference
 
 ### 1. Core idea
 
@@ -210,7 +203,9 @@ CSS grid, borders, and flat color fields are inexpensive. Risk rises if the syst
 
 Bento-card repetition, fake system telemetry, monospace everywhere, glowing borders, HUD brackets, tiny labels, animated scans, technology chips, or dashboard KPIs would turn the engineered metaphor into generic developer or sci-fi UI.
 
-### 21. Under review decisions this direction would require us to approve
+### 21. Historical under-review questions
+
+These questions are retained as exploration history; later Approved decisions and `DESIGN-SYSTEM.md` supersede them where applicable.
 
 - Grid visibility and the ratio of open to structured zones.
 - Static versus modestly sticky aligned navigation.
@@ -221,7 +216,7 @@ Bento-card repetition, fake system telemetry, monospace everywhere, glowing bord
 - Minimal motion level and reduced-motion behavior.
 - Final website language strategy.
 
-## Direction C — Industrial Restraint
+## Direction C — Industrial Restraint — Exploration reference
 
 ### 1. Core idea
 
@@ -308,7 +303,9 @@ This is the lowest-risk direction: few surfaces, little motion, no decorative as
 
 A familiar centered hero, three-card project grid, vague one-line bio, pill-shaped CTA set, generic black-and-orange startup styling, or empty space without narrative purpose would make it look like a template. Minimal does not mean removing the evidence that differentiates the site.
 
-### 21. Under review decisions this direction would require us to approve
+### 21. Historical under-review questions
+
+These questions are retained as exploration history; later Approved decisions and `DESIGN-SYSTEM.md` supersede them where applicable.
 
 - Left-aligned versus more centered hero composition.
 - Static versus quietly sticky navigation.
@@ -338,15 +335,16 @@ The ratings are comparative, not approvals. For risk and complexity, lower is pr
 | Danger of gamer/sci-fi styling | Low | Medium unless technical detail is tightly restrained | Very low |
 | Ability to showcase Moni effectively | Very high: complete product and growth narrative | Very high: architecture and evidence clarity | High: strong focus, less explanatory range |
 
-## Proposed recommendation
+## Human selection record — Approved
 
-Explore **Direction A — Editorial Performance** first.
+**Editorial Performance is the selected primary visual direction.** Its editorial pacing holds the human growth narrative and evidence-first technical story without turning the site into a dashboard, résumé, or generic project grid.
 
-It best combines Zehrtydev's human growth narrative with evidence-first technical storytelling. Moni is not only an architecture diagram or product screen: its strongest story includes the original friction, deterministic-first decision, user confirmation, transition from personal use to six real users, and the operational learning required to reach production. Editorial pacing can hold those layers without making the site feel like a dashboard, résumé, or generic project grid.
+The approved borrowings are deliberately narrow:
 
-Potentially borrow from Direction B its strict alignment discipline, restrained metadata grammar, and clear workflow diagram. Borrow from Direction C its low effect budget, large uninterrupted dark fields, and refusal to create surfaces without purpose. These borrowed traits should temper Direction A rather than combine all three directions into an indistinct hybrid.
+- **From Engineered Grid:** strict alignment discipline, clear technical diagrams, restrained metadata grammar, and precise workflow presentation.
+- **From Industrial Restraint:** very low effect budget, large uninterrupted dark fields, minimal shadows, scarce orange accent, and predominantly square geometry.
 
-This recommendation is **Proposed**. It does not select or approve a direction.
+These traits temper Editorial Performance. They do not form a 33/33/33 hybrid. The conceptual shorthand is: **“Editorial Performance, engineered with restraint.”**
 
 ## Rejected local recommendations
 
@@ -361,18 +359,11 @@ The local UI/UX search produced several generic matches that are incompatible wi
 - Light-mode pairing and a V1 theme toggle: generic guidance superseded by the approved dark-only policy.
 - New icon or UI dependencies: outside this exploration and unapproved.
 
-Useful guidance retained from the skills includes mobile-first composition, semantic reading order, visible focus, measured contrast, restrained single-accent use, responsive media with reserved dimensions, meaningful motion only, and primitive → semantic → component tokens as a future **Proposed** implementation architecture.
+Useful guidance retained from the skills includes mobile-first composition, semantic reading order, visible focus, measured contrast, restrained single-accent use, responsive media with reserved dimensions, meaningful motion only, and the Approved primitive → semantic → needs-based component token architecture.
 
-## Decisions required before implementation
+## Remaining non-design-system inputs
 
-- [ ] Approve one visual direction to develop, or request a specific revision to one direction.
-- [ ] Approve the homepage opening composition within that direction, including the degree of asymmetry and hero density.
-- [ ] Approve the navigation treatment, including static versus sticky behavior and the mobile disclosure model.
-- [ ] Approve the exact Moni presentation model: homepage evidence depth, case-study chapters, workflow diagram, and route handoff.
-- [ ] Approve the surface system: border hierarchy, square versus subtly clipped radius policy, and whether any elevation is permitted.
-- [ ] Approve screenshot and media treatment after confirming which authentic Moni assets may be published.
-- [ ] Approve the motion level and reduced-motion equivalent.
-- [ ] Approve the website language strategy: Spanish-only, English-only, or bilingual.
+- [ ] Confirm which privacy-safe authentic Moni screenshots may be published.
 - [ ] Supply or explicitly defer the pending GitHub and LinkedIn URLs and any public Moni destination needed for launch content.
 
-Exact type, spacing, width, breakpoint, focus, and state tokens should be proposed for approval after a direction is chosen and before production UI is built. A future symbol or monogram is not required for V1 implementation and should remain deferred unless the owner separately chooses to explore it.
+All Design System choices reviewed in this phase are Approved, and no Design System approval blockers remain before implementation. A future symbol or monogram is not required for V1 and remains deferred unless the owner separately chooses to explore it. Any genuinely new implementation decision must be raised separately as **Proposed**.

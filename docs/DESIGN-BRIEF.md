@@ -2,7 +2,7 @@
 
 ## Purpose of this brief
 
-This brief translates the approved brand foundation into objectives and constraints for a later website design phase. It does not define the final layout, component library, or motion system.
+This brief translates the approved brand foundation into experience objectives and constraints. It does not duplicate the final implementation values; `DESIGN-SYSTEM.md` is the implementation-level visual source of truth.
 
 Read it with `PROJECT.md` and `BRAND-FOUNDATION.md`. Where an exploration conflicts with an **Approved** brand decision, preserve the approved decision and document the alternative as a proposal for human review.
 
@@ -27,7 +27,14 @@ The eventual experience should:
 - **Wordmark:** visible textual treatment `Zehrtydev`, using Sora; no symbol is required.
 - **Architecture:** hybrid. Homepage sections are Identity / Hero, Selected Work, About, Contact, and Footer. Moni has a dedicated case study at `/projects/moni`. A `/projects` index waits until project volume justifies it.
 - **Contact:** GitHub and LinkedIn URLs remain pending; email is `soporte@zehrty.dev`. Do not invent links or add unapproved channels.
-- **Language:** **Under review**. Approved Spanish source copy does not decide whether the final site is Spanish-only, English-only, or bilingual.
+- **Language:** Spanish is primary and English is a complete secondary version. Approved routes are `/`, `/projects/moni`, `/en`, and `/en/projects/moni`; do not redirect by browser language. Spanish approved content is the source of truth, with natural professional adaptation for English.
+
+## Approved art direction and composition
+
+- **Primary direction:** Editorial Performance. Borrow only strict alignment, clear technical diagrams, restrained metadata, and precise workflows from Engineered Grid; borrow only the very low effect budget, uninterrupted dark fields, minimal shadows, scarce orange, and predominantly square geometry from Industrial Restraint. This is not an equal hybrid: **“Editorial Performance, engineered with restraint.”**
+- **Hero:** the desktop composition is `7 / 1 / 4`: columns 1–7 carry the positioning and prioritized CTAs, column 8 is deliberate editorial separation, and columns 9–12 contain `FOCUS — IA / Automatización`, `CURRENT — Construyendo productos reales`, and `STATUS — Creciendo como ingeniero`; it is context, not telemetry.
+- **Navigation:** quietly sticky, text-first desktop order `Zehrtydev | Trabajo | Sobre mí | Contacto | ES / EN`; conventional accessible mobile disclosure when necessary. The wordmark links home/top, the three labels target the matching homepage sections, and Moni has no extra permanent item.
+- **Surfaces:** Deep Black canvas, Graphite only for meaningful grouping, restrained Steel Gray structure, predominantly square geometry, selective useful cuts, exceptional shadows, and no floating-card page construction.
 
 ## Expected feeling
 
@@ -62,7 +69,7 @@ The design may create tension with scale, asymmetry, cuts, grids, or dense-to-op
 - Use adaptive gutters, readable text measures, and media behavior that avoids cropping essential information.
 - Touch targets should be comfortably operable and separated; small visible icons may use larger hit areas.
 - Strong desktop composition is required, including intentional use of negative space and asymmetry where justified.
-- Validate at representative small-phone, tablet, laptop, and wide-desktop widths; exact breakpoint choices remain open.
+- Validate at representative small-phone, tablet, laptop, wide-desktop, `200%` zoom, landscape, and the approved candidate breakpoint boundaries recorded in `DESIGN-SYSTEM.md`.
 
 ## Accessibility requirements
 
@@ -95,7 +102,15 @@ For Moni, use the verified narrative in `PROJECT.md`. The presentation must make
 - current production status, 6 real users close to Manuel, an operational core flow, dashboard access, and continued evolution;
 - OCR receipt reading, custom categories, and feedback-led additions only as future ideas, never shipped features.
 
-Do not present Moni as AI-only, imply automatic persistence without human confirmation, claim that AI built it, invent technologies, or project future user growth as an outcome. Avoid reducing it to a logo, screenshot, technology-chip collection, or vague marketing paragraph. Exact case-study composition, depth, and media treatment remain open; authentic screenshots and artifacts still require approval.
+Do not present Moni as AI-only, imply automatic persistence without human confirmation, claim that AI built it, invent technologies, or project future user growth as an outcome. Avoid reducing it to a logo, screenshot, technology-chip collection, or vague marketing paragraph.
+
+### Approved homepage treatment
+
+Moni is a mini case study, not a generic portfolio card. The homepage must show the concrete problem, why WhatsApp reduces friction, a natural-language example such as `10000 en comida`, a simplified flow, Manuel's role, verified current status, and a clear continuation to `/projects/moni`.
+
+Use authentic product media. The homepage target is at most one strong primary screenshot and one workflow diagram. Frames are clean and neutral; captions explain the evidence. Exclude exaggerated device mockups, 3D frames, glow, and glass. Protect private information in conversation captures. A clearly disclosed faithful demo may replace sensitive conversation media but must not be represented as an authentic user exchange.
+
+The diagram sequence is: WhatsApp message → deterministic parsing → AI fallback if needed → structured interpretation → confirm / correct / cancel → registration. More approved media may appear in the case study.
 
 ## Motion philosophy
 
@@ -106,7 +121,7 @@ Do not present Moni as AI-only, imply automatic persistence without human confir
 - Reserve space for incoming media or content to avoid cumulative layout shift.
 - Provide a reduced-motion treatment that removes nonessential movement rather than merely shortening it.
 
-The exact durations, easings, distances, stagger rules, and page-transition approach are intentionally undecided.
+Approved motion is limited to subtle hover/focus feedback, short color/border/opacity transitions, very small useful movement, and a scarce optional selected-content reveal. Parallax, kinetic typography, ambient animation, theatrical page transitions, scroll hijacking, and large entrance choreography are excluded. Exact approved duration, easing, distance, and reduced-motion rules are recorded in `DESIGN-SYSTEM.md`.
 
 ## What UI UX Pro Max should help explore
 
@@ -125,39 +140,28 @@ During the visual design phase, use the local skill to compare and test—not au
 
 Reject or isolate any generated recommendation that substitutes fonts, introduces competing accent colors, changes the approved tone, assumes unsupported content, or adds unnecessary dependencies.
 
-## Design-system direction — Proposed
+## Design-system direction — Approved
 
-The local design skills recommend a primitive → semantic → component token model. For Zehrty, this would mean:
+The Approved primitive → semantic → needs-based component token model means:
 
 1. Preserve approved palette values and font families as primitives.
 2. Map them to reviewed roles such as canvas, surface, foreground, muted foreground, accent, border, and focus.
 3. Define component-level tokens only after actual components and states are known.
 
-This architecture is **Proposed**, not implemented. It should prevent raw values from being scattered through components while avoiding premature token or component inventories.
+This architecture is Approved but not implemented. It should prevent raw values from being scattered through components while avoiding premature token or component inventories. `DESIGN-SYSTEM.md` governs the exact implementation rules.
 
-## Intentionally undecided
+## Remaining future decisions and content inputs
 
-The following require exploration and human approval before implementation:
+The reviewed Design System choices no longer require approval. These separate future decisions and content inputs remain:
 
-- Exact homepage composition and visual treatment of the approved opening message.
-- Navigation treatment.
-- Hero composition and CTA presentation; the CTA wording and priority are already approved.
-- Project-card or project-narrative system.
-- Exact spacing and typography scales.
-- Content width and breakpoint strategy.
-- Border, divider, radius, shadow, and elevation strategy.
-- Exact motion system and whether page transitions are warranted.
 - Icon library and icon style; do not add one until a real need is established.
-- Exact transition between homepage sections and the dedicated Moni case study within the approved hybrid architecture.
-- Exact typographic treatment of the approved `Zehrtydev` wordmark; whether a future symbol or monogram should be explored remains optional and **Proposed**.
-- Photography, screenshot, illustration, diagram, and texture direction.
-- Website language strategy: Spanish-only, English-only, or bilingual.
+- Whether a future symbol or monogram should be explored remains optional and **Proposed**; it is not required for V1.
 - GitHub and LinkedIn destination URLs, analytics, and any contact behavior beyond the approved email link.
-- Moni's approved media, public product links, and exact case-study depth.
+- Which privacy-safe authentic Moni assets may be published and any public Moni destination.
 - Whether future writing, experiments, or a career timeline belong in navigation.
 
 ## Design-phase status
 
-Visual exploration may proceed because positioning, biography, CTA priority, V1 theme policy, hybrid architecture, wordmark, Moni's core narrative, and permitted contact channels are now Approved. Remaining content gaps—especially media, project destinations, GitHub and LinkedIn URLs, and language strategy—must stay visible and must not be filled by invention.
+The Design System has completed human review. All choices in `DESIGN-SYSTEM.md` are Approved, and there are no remaining Design System approval blockers before implementation. Remaining content gaps—especially publishable media, project destinations, and GitHub and LinkedIn URLs—must stay visible and must not be filled by invention.
 
-Create alternatives only inside the approved foundation, evaluate accessibility and performance implications, and keep every new design choice **Proposed** until the human owner approves it.
+If implementation discovers a genuinely new design decision, document it separately as **Proposed**, evaluate its accessibility and performance implications, and obtain human approval rather than silently changing the Approved system.

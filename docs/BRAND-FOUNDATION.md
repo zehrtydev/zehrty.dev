@@ -84,7 +84,7 @@ The experience should feel engineered rather than decorated.
 - Never rely on orange—or color alone—to communicate state or meaning.
 - Use negative space and tonal separation before adding effects.
 - Functional colors such as error, warning, success, or info are not yet brand colors. If the interface needs them, define accessible semantic roles as **Proposed** tokens and seek approval.
-- Derived hover, active, focus, overlay, and opacity values are **Under review**. They must be documented and validated before becoming system tokens.
+- Reviewed hover, active, focus, disabled, and opacity treatments are **Approved** in `DESIGN-SYSTEM.md`; any genuinely new state or overlay value must be raised separately as **Proposed**.
 
 ## Approved typography
 
@@ -99,7 +99,7 @@ The experience should feel engineered rather than decorated.
 - Keep body text readable at a 16px baseline or larger; reserve smaller text for limited metadata.
 - Favor concise headings and comfortable body measures rather than edge-to-edge lines.
 - Avoid thin weights for small text, long all-caps passages, and decorative distortion.
-- Exact font scale, weights, line heights, tracking, loading strategy, and fallback stacks are **Under review**.
+- The exact font scale, weights, line heights, tracking, and weights to load are **Approved** in `DESIGN-SYSTEM.md`.
 - A monospace typeface is not approved. If a genuine technical-content need emerges, propose its role without displacing Sora or Inter.
 
 ## Visual principles — Approved
@@ -118,6 +118,15 @@ The experience should feel engineered rather than decorated.
 
 “Stealth Performance” and “Industrial Aggressive” describe a controlled design attitude, not literal themes. The site must not become a metallic poster, racing interface, sci-fi dashboard, or gaming UI.
 
+### Selected visual direction — Approved
+
+**Editorial Performance** is the dominant visual language: a typography-led, evidence-first technical editorial with controlled asymmetry and deliberate pacing. It is engineered with restraint by borrowing only these traits:
+
+- from Engineered Grid: strict alignment discipline, clear technical diagrams, restrained metadata grammar, and precise workflow presentation;
+- from Industrial Restraint: a very low effect budget, large uninterrupted dark fields, minimal shadows, scarce orange accent, and predominantly square geometry.
+
+This is not a 33/33/33 hybrid. A concise description is: **“Editorial Performance, engineered with restraint.”**
+
 ## Shape and composition
 
 ### Approved
@@ -128,16 +137,20 @@ The experience should feel engineered rather than decorated.
 - Content evidence remains the focal point; decoration stays subordinate.
 - Repetition should create rhythm and consistency, not texture for its own sake.
 
-### Under review
+### Approved surface direction
 
-- Exact spacing scale and content widths.
-- Border widths and opacity hierarchy.
-- Radius strategy, including whether most surfaces remain square or lightly cut.
-- Shadow and elevation strategy.
-- Image treatment, crop behavior, overlays, and art direction.
+- Deep Black is the dominant canvas; Graphite is reserved for meaningful grouped surfaces.
+- Steel Gray provides restrained borders, rules, and structural separation.
+- Geometry is predominantly square. Subtle clipped or diagonal details may appear selectively when they clarify composition.
+- Elevation comes from tonal contrast, spacing, and hierarchy. Shadows are exceptional rather than standard.
+- Surfaces exist only where content genuinely requires grouping; the site must not become a collection of floating SaaS cards.
+
+### Remaining future decisions
+
 - Icon family, stroke style, and size tokens.
-- Exact typographic treatment and usage rules for the approved `Zehrtydev` wordmark.
 - Whether a future symbol or monogram should be explored; no such mark is approved for V1.
+
+The implementation-level spacing, content widths, borders, surface geometry, media treatment, diagram grammar, and `Zehrtydev` wordmark typography are **Approved** in `DESIGN-SYSTEM.md`.
 
 ## Tone and voice — Approved
 
@@ -166,7 +179,13 @@ Write with calm confidence, technical clarity, and specificity.
 - Primary: **“Explorar mi trabajo”**
 - Secondary: **“Contactarme”**
 
-Evidence and work take priority over contact. The website language strategy remains **Under review**, so these approved Spanish sources must not be treated as approval for a Spanish-only architecture.
+Evidence and work take priority over contact. These Spanish CTA sources govern the primary version; English CTA copy must preserve their hierarchy and intent through natural adaptation.
+
+## Navigation, motion, and language — Approved
+
+- Desktop navigation is quietly sticky and text-first: `Zehrtydev | Trabajo | Sobre mí | Contacto | ES / EN`. It uses no heavy blur, glassmorphism, large shadow, or permanently orange Contact action. Mobile uses a conventional accessible menu when needed and keeps the language switch reachable.
+- Motion is restrained and purposeful: subtle hover/focus feedback, short color/border/opacity transitions, very small useful movement, and potentially a restrained reveal for selected content. Parallax, kinetic typography, continuous ambient animation, theatrical page transitions, scroll hijacking, and large entrance choreography are excluded. Reduced motion removes nonessential movement without removing information or hierarchy.
+- Spanish is primary; English is a complete secondary version at `/en` and `/en/projects/moni`, alongside Spanish `/` and `/projects/moni`. Spanish approved copy remains the source of truth, English is naturally adapted, and browser-language redirects are not used. No localization dependency is approved.
 
 ## Anti-patterns — Approved
 
@@ -183,15 +202,15 @@ Evidence and work take priority over contact. The website language strategy rema
 
 ## Approved decisions vs. proposals
 
-The positioning, factual short bio, `Zehrtydev` wordmark, dark-only V1 theme, CTAs, palette, Sora/Inter roles, brand role, desired perception, personality, voice, visual direction, and anti-patterns above are **Approved**.
+The positioning, factual short bio, `Zehrtydev` wordmark, dark-only V1 theme, CTAs, palette, Sora/Inter roles, brand role, desired perception, personality, voice, Editorial Performance direction, split hero, navigation concept, Moni mini-case-study and media philosophy, surface philosophy, motion philosophy, bilingual strategy, and anti-patterns above are **Approved**.
 
-Current **Proposed** implementation principles derived from the local design guidance are:
+The following implementation principles are **Approved** and specified in `DESIGN-SYSTEM.md`:
 
 - Use a three-layer token architecture—primitive, semantic, then component—to prevent raw brand values from becoming ad hoc component choices.
 - Define explicit tokens for focus, interactive states, surface hierarchy, type roles, motion, and media aspect ratios before implementation.
 - Use low-cost, restrained effects and reserve space for media to protect performance and layout stability.
 - Keep one visually dominant action per view and make all interaction states keyboard-visible.
 
-These proposals complement the approved foundation but remain unimplemented. Exact token names and values require review during the design-system phase.
+These principles complement the approved foundation and remain unimplemented. The human review of their exact values and rules is complete; `DESIGN-SYSTEM.md` is the implementation-level visual source of truth.
 
 The local UI/UX recommendation search also returned a green accent, different typefaces, an FAQ-led structure, and glow effects. These are **not proposed** because they conflict with approved decisions or the product purpose. They must not enter the design by implication.

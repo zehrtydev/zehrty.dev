@@ -59,9 +59,31 @@ The homepage contains, in order:
 
 Projects with enough verified material may have dedicated case-study routes. Moni is the first dedicated case study at `/projects/moni`. Do not create empty routes to imitate a larger portfolio. A future `/projects` index may be introduced only when enough projects justify it.
 
+## Homepage presentation — Approved
+
+The selected visual direction is **Editorial Performance**, strengthened—not evenly hybridized—by strict alignment, clear technical diagrams, restrained metadata, and precise workflow presentation from Engineered Grid, plus the low effect budget, uninterrupted dark fields, minimal shadows, scarce orange, and predominantly square geometry of Industrial Restraint. The governing description is: **“Editorial Performance, engineered with restraint.”**
+
+The desktop hero uses the Approved `7 / 1 / 4` composition: columns 1–7 contain the approved positioning and CTAs, column 8 provides deliberate editorial separation, and columns 9–12 contain only:
+
+- **FOCUS:** IA / Automatización
+- **CURRENT:** Construyendo productos reales
+- **STATUS:** Creciendo como ingeniero
+
+This column provides human context; it must not become dashboard metadata, decorative telemetry, or invented status data.
+
+Desktop navigation is text-first and quietly sticky: `Zehrtydev | Trabajo | Sobre mí | Contacto | ES / EN`. The wordmark returns to the homepage or page top; Trabajo targets Selected Work, Sobre mí targets About, and Contacto targets Contact. Moni is reached through Selected Work and does not receive another permanent item. Mobile uses a conventional accessible menu only when needed, and the language switch remains accessible. Avoid heavy blur, glassmorphism, large shadows, and a permanent orange Contact button.
+
 ## Primary project showcase: Moni
 
 Moni is the primary real product for V1 and receives the strongest narrative and visual emphasis.
+
+### Homepage mini case study and media — Approved
+
+On the homepage, Moni is a mini case study rather than a generic portfolio card. It must expose the concrete problem, why WhatsApp reduces friction, an example such as `10000 en comida`, the simplified workflow, Manuel's role, verified current status, and a clear continuation to `/projects/moni`. The dedicated route contains the deeper engineering and learning narrative.
+
+The homepage media target is no more than one strong primary screenshot plus one clear workflow diagram. Use authentic product screenshots in clean, neutral framing with captions that state what each image proves. Do not use exaggerated device mockups, 3D frames, glow, or glass treatment. Protect personal and private information in WhatsApp media. A faithful demo representation is acceptable when necessary only if it is clearly presented as a demo and not misrepresented as an authentic user conversation.
+
+The workflow diagram must communicate: WhatsApp message → deterministic parsing → AI fallback if needed → structured interpretation → confirm / correct / cancel → registration. The dedicated case study may use additional approved screenshots and diagrams.
 
 ### Problem and concept — Approved
 
@@ -123,9 +145,16 @@ These ideas must never be presented as current capabilities.
 
 The pending URLs are content gaps. Do not invent them. WhatsApp, Instagram, X, phone numbers, CV downloads, and other contact channels are outside the approved V1 scope.
 
-## Website language — Under review
+## Website language and routes — Approved
 
-The positioning, bio, and CTAs currently have approved Spanish source copy, but the final site language strategy is not approved. Do not establish Spanish-only, English-only, or bilingual architecture until the owner decides.
+Spanish is primary and its approved content is the source of truth. English is a complete secondary version, professionally adapted for natural English rather than translated word-for-word.
+
+- Spanish: `/` and `/projects/moni`
+- English: `/en` and `/en/projects/moni`
+
+The header includes a restrained `ES / EN` switch. Do not redirect automatically from browser language. Each route must emit its correct `<html lang>` value in the initial server-rendered/static HTML (`es` for Spanish and `en` for English), without client-side mutation. V1 should prefer a simple static-first content architecture; no localization dependency is approved, and one should be proposed only if a demonstrated need justifies it.
+
+`DESIGN-SYSTEM.md` is the implementation-level visual source of truth. Its reviewed layout, responsive, spacing, typography, color-role, token, surface, interaction, motion, media, page-composition, case-study, and bilingual choices are Approved.
 
 ## Technical scope
 
