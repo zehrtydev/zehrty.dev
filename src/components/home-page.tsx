@@ -94,9 +94,6 @@ export function HomePage({ content }: { content: HomeContent }) {
               <div>
                 <h3>{content.work.statusLabel}</h3>
                 <p>{content.work.status}</p>
-                <Link className="editorial-link" href={content.work.caseStudyHref}>
-                  {content.work.caseStudyCta} <Arrow />
-                </Link>
               </div>
             </div>
           </div>

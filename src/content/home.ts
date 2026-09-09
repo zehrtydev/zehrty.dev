@@ -37,8 +37,6 @@ export type HomeContent = {
     role: string;
     statusLabel: string;
     status: string;
-    caseStudyCta: string;
-    caseStudyHref: string;
   };
   about: {
     sectionLabel: string;
@@ -117,8 +115,6 @@ export const homeEs: HomeContent = {
     statusLabel: "Estado actual",
     status:
       "Moni funciona en producción con seis usuarios reales, actualmente personas cercanas a mí. El flujo principal de transacciones está operativo, el dashboard está disponible y el producto continúa evolucionando.",
-    caseStudyCta: "Ver el caso de estudio de Moni",
-    caseStudyHref: "/projects/moni",
   },
   about: {
     sectionLabel: "Sobre mí",
@@ -198,8 +194,6 @@ export const homeEn: HomeContent = {
     statusLabel: "Current status",
     status:
       "Moni is running in production with six real users, currently people close to me. The core transaction flow is operational, the dashboard is available, and the product continues to evolve.",
-    caseStudyCta: "Read the Moni case study",
-    caseStudyHref: "/en/projects/moni",
   },
   about: {
     sectionLabel: "About",
