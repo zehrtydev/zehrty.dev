@@ -37,6 +37,9 @@ export type HomeContent = {
     role: string;
     statusLabel: string;
     status: string;
+    caseStudyLabel: string;
+    caseStudyHref: string;
+    productLabel: string;
   };
   about: {
     sectionLabel: string;
@@ -54,6 +57,11 @@ export type HomeContent = {
     languageLabel: string;
   };
 };
+
+export type SiteNavigationContent = Pick<
+  HomeContent,
+  "locale" | "homeHref" | "counterpartHref" | "counterpartLabel" | "nav"
+>;
 
 export const homeEs: HomeContent = {
   locale: "es",
@@ -115,6 +123,9 @@ export const homeEs: HomeContent = {
     statusLabel: "Estado actual",
     status:
       "Moni funciona en producción con seis usuarios reales, actualmente personas cercanas a mí. El flujo principal de transacciones está operativo, el dashboard está disponible y el producto continúa evolucionando.",
+    caseStudyLabel: "Ver caso técnico",
+    caseStudyHref: "/projects/moni",
+    productLabel: "Visitar Moni ↗",
   },
   about: {
     sectionLabel: "Sobre mí",
@@ -194,6 +205,9 @@ export const homeEn: HomeContent = {
     statusLabel: "Current status",
     status:
       "Moni is running in production with six real users, currently people close to me. The core transaction flow is operational, the dashboard is available, and the product continues to evolve.",
+    caseStudyLabel: "View technical case study",
+    caseStudyHref: "/en/projects/moni",
+    productLabel: "Visit Moni ↗",
   },
   about: {
     sectionLabel: "About",

@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 
 export default function EnglishLayout({ children }: LayoutProps<"/en">) {
   return (
-    <html lang="en" className={`${sora.variable} ${inter.variable}`}>
+    <html lang="en" className={`${sora.variable} ${inter.variable}`} data-scroll-behavior="smooth">
       <body>{children}</body>
     </html>
   );
