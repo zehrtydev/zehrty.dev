@@ -1,8 +1,8 @@
 import Link from "next/link";
-import type { HomeContent } from "@/content/home";
+import type { SiteNavigationContent } from "@/content/home";
 import { MobileNavigation } from "./mobile-navigation";
 
-export function SiteHeader({ content }: { content: HomeContent }) {
+export function SiteHeader({ content }: { content: SiteNavigationContent }) {
   return (
     <header className="site-header">
       <div className="site-header-inner">

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { HomeContent } from "@/content/home";
 import { SiteHeader } from "./site-header";
+import { SiteFooter } from "./site-footer";
 import { WorkflowDiagram } from "./workflow-diagram";
 
 const EMAIL = "soporte@zehrty.dev";
@@ -96,6 +97,24 @@ export function HomePage({ content }: { content: HomeContent }) {
                 <p>{content.work.status}</p>
               </div>
             </div>
+
+            <div className="work-actions">
+              <Link className="button button-primary" href={content.work.caseStudyHref}>
+                {content.work.caseStudyLabel}
+                <span aria-hidden="true">→</span>
+              </Link>
+              <a
+                className="button button-secondary"
+                href="https://moni.zehrty.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {content.work.productLabel}
+                <span className="sr-only">
+                  {content.locale === "es" ? " (abre en una pestaña nueva)" : " (opens in a new tab)"}
+                </span>
+              </a>
+            </div>
           </div>
         </section>
 
@@ -124,14 +143,10 @@ export function HomePage({ content }: { content: HomeContent }) {
         </section>
       </main>
 
-      <footer className="site-footer section-shell">
-        <div className="footer-inner">
-          <span className="footer-wordmark">Zehrtydev</span>
-          <span>© {new Date().getFullYear()}</span>
-          <Link href={content.counterpartHref}>{content.footer.languageLabel}</Link>
-          <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
-        </div>
-      </footer>
+      <SiteFooter
+        counterpartHref={content.counterpartHref}
+        languageLabel={content.footer.languageLabel}
+      />
     </>
   );
 }

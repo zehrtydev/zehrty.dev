@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 
 export default function SpanishLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="es" className={`${sora.variable} ${inter.variable}`}>
+    <html lang="es" className={`${sora.variable} ${inter.variable}`} data-scroll-behavior="smooth">
       <body>{children}</body>
     </html>
   );

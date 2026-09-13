@@ -2,12 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import type { HomeContent } from "@/content/home";
-
-type MobileNavigationProps = Pick<
-  HomeContent,
-  "homeHref" | "counterpartHref" | "counterpartLabel" | "nav" | "locale"
->;
+import type { SiteNavigationContent } from "@/content/home";
 
 export function MobileNavigation({
   homeHref,
@@ -15,7 +10,7 @@ export function MobileNavigation({
   counterpartLabel,
   nav,
   locale,
-}: MobileNavigationProps) {
+}: SiteNavigationContent) {
   const [isOpen, setIsOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
 
