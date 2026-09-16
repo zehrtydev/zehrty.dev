@@ -1,5 +1,7 @@
 import Link from "next/link";
 import type { HomeContent } from "@/content/home";
+import { HeroSection } from "./hero-section";
+import { MoniInterpretationDemo } from "./moni-interpretation-demo";
 import { SiteHeader } from "./site-header";
 import { SiteFooter } from "./site-footer";
 import { WorkflowDiagram } from "./workflow-diagram";
@@ -19,71 +21,32 @@ export function HomePage({ content }: { content: HomeContent }) {
       <SiteHeader content={content} />
 
       <main id="main-content">
-        <section className="hero section-shell" aria-labelledby="hero-title">
-          <div className="editorial-grid hero-grid">
-            <div className="hero-primary">
-              <h1 id="hero-title">{content.hero.firstSentence}</h1>
-              <p>{content.hero.secondSentence}</p>
-              <div className="hero-actions">
-                <Link className="button button-primary" href="#work">
-                  {content.hero.primaryCta}
-                  <span aria-hidden="true">↓</span>
-                </Link>
-                <Link className="button button-secondary" href="#contact">
-                  {content.hero.secondaryCta}
-                </Link>
-              </div>
-            </div>
-
-            <dl className="hero-context">
-              {content.hero.context.map((item) => (
-                <div key={item.label}>
-                  <dt>{item.label}</dt>
-                  <dd>{item.value}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        </section>
+        <HeroSection hero={content.hero} />
 
         <section id="work" className="work-section" aria-labelledby="work-title">
           <div className="section-shell work-shell">
-            <div className="work-marker">
-              <span aria-hidden="true">02</span>
-              <p>{content.work.sectionLabel}</p>
-            </div>
-            <div className="editorial-grid work-intro">
-              <div className="work-heading">
-                <h2 id="work-title">{content.work.title}</h2>
-                <p className="work-lead">{content.work.intro}</p>
+            <div className="work-handoff">
+              <div className="work-handoff-rule" aria-hidden="true">
+                <span />
               </div>
-              <div className="work-narrative">
-                <p>{content.work.friction}</p>
+              <div className="work-marker">
+                <span aria-hidden="true">02</span>
+                <p>{content.work.sectionLabel}</p>
+              </div>
+              <div className="editorial-grid work-intro">
+                <div className="work-heading">
+                  <div className="work-title-clip">
+                    <h2 id="work-title">{content.work.title}</h2>
+                  </div>
+                  <p className="work-lead">{content.work.intro}</p>
+                </div>
+                <div className="work-narrative">
+                  <p>{content.work.friction}</p>
+                </div>
               </div>
             </div>
 
-            <figure className="product-visualization" aria-labelledby="product-visualization-caption">
-              <div className="product-input">
-                <span>{content.work.exampleLabel}</span>
-                <strong>“{content.work.example}”</strong>
-                <div className="input-line" aria-hidden="true" />
-              </div>
-              <div className="product-output">
-                <span className="interpretation-arrow" aria-hidden="true">→</span>
-                <dl>
-                  {content.work.interpretation.map((item) => (
-                    <div key={item.label}>
-                      <dt>{item.label}</dt>
-                      <dd>{item.value}</dd>
-                    </div>
-                  ))}
-                </dl>
-              </div>
-              <figcaption id="product-visualization-caption">
-                <span>{content.work.visualizationLabel}</span>
-                {content.work.exampleResult}
-              </figcaption>
-            </figure>
+            <MoniInterpretationDemo content={content.work.demo} />
 
             <WorkflowDiagram work={content.work} />
 

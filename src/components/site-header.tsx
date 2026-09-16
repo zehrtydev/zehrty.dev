@@ -21,7 +21,13 @@ export function SiteHeader({ content }: { content: SiteNavigationContent }) {
           </div>
         </nav>
 
-        <MobileNavigation {...content} />
+        <MobileNavigation
+          locale={content.locale}
+          homeHref={content.homeHref}
+          counterpartHref={content.counterpartHref}
+          counterpartLabel={content.counterpartLabel}
+          nav={content.nav}
+        />
       </div>
     </header>
   );

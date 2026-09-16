@@ -29,7 +29,35 @@ export type HomeContent = {
     example: string;
     exampleResult: string;
     visualizationLabel: string;
-    interpretation: Array<{ label: string; value: string }>;
+    demo: {
+      title: string;
+      inputLabel: string;
+      inputHint: string;
+      submitLabel: string;
+      sourceLabel: string;
+      resultLabel: string;
+      idleMessage: string;
+      fields: {
+        amount: string;
+        category: string;
+        transactionType: string;
+        date: string;
+        review: string;
+      };
+      values: {
+        expense: string;
+        food: string;
+        inferred: string;
+        pending: string;
+        notPersisted: string;
+      };
+      persistenceLabel: string;
+      captionLabel: string;
+      caption: string;
+      disclaimer: string;
+      invalidMessage: string;
+      announcement: string;
+    };
     workflowTitle: string;
     workflowDescription: string;
     workflow: Array<{ label: string; detail: string; emphasis?: boolean }>;
@@ -101,11 +129,38 @@ export const homeEs: HomeContent = {
     exampleResult:
       "Moni lo interpreta como datos financieros estructurados: monto, tipo de movimiento, categoría y fecha.",
     visualizationLabel: "Visualización explicativa del producto",
-    interpretation: [
-      { label: "Monto", value: "10000" },
-      { label: "Tipo", value: "Gasto" },
-      { label: "Categoría", value: "Comida" },
-    ],
+    demo: {
+      title: "Demostración de interpretación",
+      inputLabel: "Mensaje de ejemplo",
+      inputHint: "Esta demostración local reconoce únicamente la frase incluida.",
+      submitLabel: "Interpretar",
+      sourceLabel: "Frase de origen",
+      resultLabel: "Interpretación estructurada",
+      idleMessage: "Envía el mensaje de ejemplo para revelar su interpretación.",
+      fields: {
+        amount: "Monto",
+        category: "Categoría",
+        transactionType: "Tipo",
+        date: "Fecha",
+        review: "Revisión",
+      },
+      values: {
+        expense: "Gasto",
+        food: "Comida",
+        inferred: "No especificada (inferida)",
+        pending: "Pendiente de revisión",
+        notPersisted: "No guardado",
+      },
+      persistenceLabel: "Persistencia",
+      captionLabel: "Visualización explicativa del producto",
+      caption:
+        "La frase se representa como monto, categoría, tipo, fecha y estado de revisión.",
+      disclaimer:
+        "Representación local de demostración. No se comunica con Moni ni guarda una transacción.",
+      invalidMessage: "Usa la frase de demostración: “10000 en comida”.",
+      announcement:
+        "Interpretación mostrada: monto 10000, categoría Comida, tipo Gasto, fecha no especificada e inferida, pendiente de revisión. No guardado.",
+    },
     workflowTitle: "Del mensaje al registro",
     workflowDescription:
       "El análisis determinista ocurre primero. La inteligencia artificial interviene solo si hace falta, y ningún movimiento se guarda sin confirmación del usuario.",
@@ -183,11 +238,38 @@ export const homeEn: HomeContent = {
     exampleResult:
       "Moni interprets it as structured financial data: amount, transaction type, category, and date.",
     visualizationLabel: "Explanatory product visualization",
-    interpretation: [
-      { label: "Amount", value: "10000" },
-      { label: "Type", value: "Expense" },
-      { label: "Category", value: "Food" },
-    ],
+    demo: {
+      title: "Interpretation demonstration",
+      inputLabel: "Example message",
+      inputHint: "This local demonstration recognizes only the included phrase.",
+      submitLabel: "Interpret",
+      sourceLabel: "Source phrase",
+      resultLabel: "Structured interpretation",
+      idleMessage: "Submit the example message to reveal its interpretation.",
+      fields: {
+        amount: "Amount",
+        category: "Category",
+        transactionType: "Type",
+        date: "Date",
+        review: "Review",
+      },
+      values: {
+        expense: "Expense",
+        food: "Food",
+        inferred: "Unspecified (inferred)",
+        pending: "Pending review",
+        notPersisted: "Not saved",
+      },
+      persistenceLabel: "Persistence",
+      captionLabel: "Explanatory product visualization",
+      caption:
+        "The phrase is represented as an amount, category, type, date, and review state.",
+      disclaimer:
+        "Local demonstration only. It does not contact Moni or save a transaction.",
+      invalidMessage: "Use the demonstration phrase: “10000 en comida”.",
+      announcement:
+        "Interpretation shown: amount 10000, category Food, type Expense, date unspecified and inferred, pending review. Not saved.",
+    },
     workflowTitle: "From message to record",
     workflowDescription:
       "Deterministic parsing runs first. AI steps in only when needed, and no transaction is stored without the user’s confirmation.",
