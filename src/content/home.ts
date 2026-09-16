@@ -15,6 +15,7 @@ export type HomeContent = {
   };
   hero: {
     firstSentence: string;
+    headlineLines: string[];
     secondSentence: string;
     primaryCta: string;
     secondaryCta: string;
@@ -107,6 +108,12 @@ export const homeEs: HomeContent = {
   hero: {
     firstSentence:
       "Soy desarrollador enfocado en inteligencia artificial y automatización.",
+    headlineLines: [
+      "Soy desarrollador",
+      "enfocado en",
+      "inteligencia artificial y",
+      "automatización.",
+    ],
     secondSentence:
       "Construyo productos reales para resolver problemas concretos mientras sigo creciendo como ingeniero.",
     primaryCta: "Explorar mi trabajo",
@@ -217,6 +224,12 @@ export const homeEn: HomeContent = {
   hero: {
     firstSentence:
       "I’m a developer focused on artificial intelligence and automation.",
+    headlineLines: [
+      "I’m a developer",
+      "focused on",
+      "artificial intelligence and",
+      "automation.",
+    ],
     secondSentence:
       "I build real products to solve concrete problems while continuing to grow as an engineer.",
     primaryCta: "Explore my work",

@@ -8,7 +8,14 @@ export function HeroSection({ hero }: { hero: HomeContent["hero"] }) {
         <div className="hero-rule" aria-hidden="true" />
 
         <div className="hero-primary">
-          <h1 id="hero-title">{hero.firstSentence}</h1>
+          <h1 id="hero-title" aria-label={hero.firstSentence}>
+            {hero.headlineLines.map((line, index) => (
+              <span className="hero-line" key={line}>
+                <span>{line}</span>
+                {index < hero.headlineLines.length - 1 ? " " : null}
+              </span>
+            ))}
+          </h1>
           <p>{hero.secondSentence}</p>
           <div className="hero-actions">
             <Link className="button button-primary" href="#work">

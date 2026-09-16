@@ -4,6 +4,7 @@ import { HeroSection } from "./hero-section";
 import { MoniInterpretationDemo } from "./moni-interpretation-demo";
 import { SiteHeader } from "./site-header";
 import { SiteFooter } from "./site-footer";
+import { ViewportRevealController } from "./viewport-reveal-controller";
 import { WorkflowDiagram } from "./workflow-diagram";
 
 const EMAIL = "soporte@zehrty.dev";
@@ -18,6 +19,7 @@ export function HomePage({ content }: { content: HomeContent }) {
       <a className="skip-link" href="#main-content">
         {content.locale === "es" ? "Saltar al contenido" : "Skip to content"}
       </a>
+      <ViewportRevealController />
       <SiteHeader content={content} />
 
       <main id="main-content">
@@ -25,7 +27,7 @@ export function HomePage({ content }: { content: HomeContent }) {
 
         <section id="work" className="work-section" aria-labelledby="work-title">
           <div className="section-shell work-shell">
-            <div className="work-handoff">
+            <div className="work-handoff" data-viewport-reveal="work-handoff">
               <div className="work-handoff-rule" aria-hidden="true">
                 <span />
               </div>

@@ -17,7 +17,9 @@ export function MoniInterpretationDemo({ content }: { content: DemoContent }) {
   const errorId = useId();
   const captionId = useId();
   const [input, setInput] = useState(MONI_DEMO_SOURCE);
-  const [interpretation, setInterpretation] = useState<MoniDemoInterpretation | null>(null);
+  const [interpretation, setInterpretation] = useState<MoniDemoInterpretation | null>(() =>
+    parseMoniDemo(MONI_DEMO_SOURCE),
+  );
   const [error, setError] = useState("");
   const [run, setRun] = useState(0);
   const [announcement, setAnnouncement] = useState("");
@@ -64,22 +66,32 @@ export function MoniInterpretationDemo({ content }: { content: DemoContent }) {
 
   const fields = interpretation
     ? [
-        { label: content.fields.amount, value: interpretation.amount },
+        { label: content.fields.amount, value: interpretation.amount, stage: "primary" },
         {
           label: content.fields.category,
           value: content.values[interpretation.category],
+          stage: "primary",
         },
         {
           label: content.fields.transactionType,
           value: content.values[interpretation.transactionType],
+          stage: "secondary",
         },
-        { label: content.fields.date, value: content.values[interpretation.date] },
-        { label: content.fields.review, value: content.values[interpretation.review] },
+        {
+          label: content.fields.date,
+          value: content.values[interpretation.date],
+          stage: "secondary",
+        },
+        {
+          label: content.fields.review,
+          value: content.values[interpretation.review],
+          stage: "final",
+        },
       ]
     : [];
 
   return (
-    <figure className="moni-demo" aria-labelledby={captionId}>
+    <figure className="moni-demo" aria-labelledby={captionId} data-viewport-reveal="moni-demo">
       <div className="moni-demo-grid">
         <div className="moni-demo-input-panel">
           <p className="moni-demo-kicker">{content.title}</p>
@@ -117,7 +129,10 @@ export function MoniInterpretationDemo({ content }: { content: DemoContent }) {
             <div key={run} className="moni-demo-sequence">
               <div className="moni-demo-source">
                 <span>{content.sourceLabel}</span>
-                <strong>“{interpretation.source}”</strong>
+                <strong>
+                  “<span className="moni-demo-token">{interpretation.amount}</span> en{" "}
+                  <span className="moni-demo-token">comida</span>”
+                </strong>
               </div>
 
               <div className="moni-demo-causal-rule" aria-hidden="true">
@@ -128,7 +143,7 @@ export function MoniInterpretationDemo({ content }: { content: DemoContent }) {
                 <p className="moni-demo-kicker">{content.resultLabel}</p>
                 <dl>
                   {fields.map((field) => (
-                    <div key={field.label}>
+                    <div data-stage={field.stage} key={field.label}>
                       <dt>{field.label}</dt>
                       <dd>{field.value}</dd>
                     </div>

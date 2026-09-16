@@ -171,10 +171,12 @@ button { color: inherit; font: inherit; }
 .hero-primary, .hero-context, .work-heading, .work-narrative, .work-evidence > div, .about-grid > div, .about-content { grid-column: 1 / -1; }
 .hero-primary, .hero-context { position: relative; z-index: 1; }
 .hero-primary h1 {
-  max-width: 14ch; margin: 0; font-family: var(--font-sora), sans-serif;
+  margin: 0; font-family: var(--font-sora), sans-serif;
   font-size: clamp(3rem, 2.4rem + 3vw, 4.75rem); font-weight: 600;
   line-height: .98; letter-spacing: -.03em; text-wrap: balance;
 }
+.hero-line { display: block; overflow: clip; padding-bottom: .08em; margin-bottom: -.08em; }
+.hero-line > span { display: inline-block; }
 .hero-primary > p {
   max-width: var(--compact-reading-max); margin: var(--space-8) 0 0; color: var(--color-muted);
   font-size: clamp(1.1875rem, 1.13rem + .2vw, 1.3125rem); line-height: 1.55;
@@ -192,9 +194,12 @@ button { color: inherit; font: inherit; }
 .button-secondary:hover { border-color: var(--color-border-strong); text-decoration: underline; text-underline-offset: var(--space-1); }
 .button:active, .editorial-link:active, .contact-link:active { opacity: .8; }
 .hero-context {
-  display: grid; gap: var(--space-6); margin: var(--space-16) 0 0;
+  position: relative; display: grid; gap: var(--space-6); margin: var(--space-16) 0 0;
   padding: var(--space-6) 0 var(--space-2) var(--space-6);
-  border-left: 1px solid var(--color-accent);
+}
+.hero-context::before {
+  position: absolute; top: 0; bottom: 0; left: 0; width: 1px;
+  background: var(--color-accent); content: ""; transform-origin: top;
 }
 .hero-context dt, .product-output dt {
   color: var(--color-muted); font-size: .8125rem; font-weight: 600; line-height: 1.35;
@@ -228,6 +233,7 @@ button { color: inherit; font: inherit; }
   margin: 0; font-family: var(--font-sora), sans-serif; font-size: clamp(2rem, 1.65rem + 1.7vw, 3rem);
   font-weight: 600; line-height: 1.1; letter-spacing: -.02em;
 }
+.work-title-clip { overflow: clip; padding-bottom: .08em; margin-bottom: -.08em; }
 .work-heading h2 { font-size: clamp(5rem, 2.25rem + 12vw, 12rem); line-height: .8; letter-spacing: -.055em; }
 .work-lead {
   max-width: 18ch; margin: var(--space-6) 0 0; font-family: var(--font-sora), sans-serif;
@@ -274,6 +280,11 @@ button { color: inherit; font: inherit; }
 .moni-demo-source strong {
   overflow-wrap: anywhere; font-family: var(--font-sora), sans-serif;
   font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.25rem); line-height: 1.1; letter-spacing: -.025em;
+}
+.moni-demo-token { position: relative; display: inline-block; }
+.moni-demo-token::after {
+  position: absolute; right: 0; bottom: -.2em; left: 0; height: 2px;
+  background: var(--color-accent); content: ""; transform-origin: left;
 }
 .moni-demo-causal-rule { position: relative; display: grid; height: var(--space-16); place-items: center; color: var(--color-accent); }
 .moni-demo-causal-rule::before {
@@ -735,6 +746,8 @@ button { color: inherit; font: inherit; }
   }
   .connector-primary, .connector-fallback {
     fill: none;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
     vector-effect: non-scaling-stroke;
   }
   .connector-primary {
@@ -795,18 +808,23 @@ button { color: inherit; font: inherit; }
   to { opacity: 1; transform: scaleX(1); }
 }
 
-@keyframes hero-title-enter {
-  from { opacity: 0; clip-path: inset(0 0 100% 0); transform: translateY(1.5rem); }
-  to { opacity: 1; clip-path: inset(0); transform: translateY(0); }
-}
-
-@keyframes hero-copy-enter {
+@keyframes editorial-rise-enter {
   from { opacity: 0; transform: translateY(.75rem); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes hero-context-enter {
-  from { opacity: 0; transform: translateX(1rem); }
+@keyframes hero-line-enter {
+  from { opacity: 0; clip-path: inset(0 0 100% 0); transform: translateY(1.5rem); }
+  to { opacity: 1; clip-path: inset(0); transform: translateY(0); }
+}
+
+@keyframes hero-context-rule-enter {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+@keyframes editorial-horizontal-enter {
+  from { opacity: 0; transform: translateX(-1.5rem); }
   to { opacity: 1; transform: translateX(0); }
 }
 
@@ -816,12 +834,12 @@ button { color: inherit; font: inherit; }
 }
 
 @keyframes handoff-marker-enter {
-  from { opacity: 0; transform: translateX(-1rem); }
+  from { opacity: 0; transform: translateX(-2rem); }
   to { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes handoff-title-enter {
-  from { opacity: 0; clip-path: inset(0 0 100% 0); transform: translateY(2.25rem); }
+  from { opacity: 0; clip-path: inset(0 0 100% 0); transform: translateY(4rem); }
   to { opacity: 1; clip-path: inset(0); transform: translateY(0); }
 }
 
@@ -831,8 +849,13 @@ button { color: inherit; font: inherit; }
 }
 
 @keyframes demo-rule-enter {
-  from { transform: scale(0); }
-  to { transform: scale(1); }
+  from { opacity: 0; transform: scale(0); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes demo-recognition-enter {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }
 
 @keyframes demo-result-enter {
@@ -845,44 +868,119 @@ button { color: inherit; font: inherit; }
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes workflow-node-enter {
+  from { opacity: 0; transform: translateY(.625rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes workflow-connector-enter {
+  from { opacity: 0; stroke-dashoffset: 1; }
+  to { opacity: 1; stroke-dashoffset: 0; }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .hero-rule { animation: hero-rule-enter var(--duration-editorial) var(--ease-editorial) both; }
-  .hero-primary h1 { animation: hero-title-enter var(--duration-editorial-emphasis) var(--ease-editorial) both; }
-  .hero-primary > p { animation: hero-copy-enter var(--duration-editorial) var(--ease-editorial) 60ms both; }
-  .hero-actions { animation: hero-copy-enter var(--duration-editorial) var(--ease-editorial) 140ms both; }
-  .hero-context { animation: hero-context-enter var(--duration-editorial) var(--ease-editorial) 100ms both; }
+  .hero-line > span { animation: hero-line-enter 700ms var(--ease-editorial) both; }
+  .hero-line:nth-child(2) > span { animation-delay: 70ms; }
+  .hero-line:nth-child(3) > span { animation-delay: 140ms; }
+  .hero-line:nth-child(4) > span { animation-delay: 210ms; }
+  .hero-primary > p { animation: editorial-rise-enter var(--duration-editorial) var(--ease-editorial) 250ms both; }
+  .hero-actions { animation: editorial-rise-enter var(--duration-editorial) var(--ease-editorial) 330ms both; }
+  .hero-context::before { animation: hero-context-rule-enter 640ms var(--ease-editorial) 180ms both; }
+  .hero-context > div { animation: editorial-horizontal-enter 520ms var(--ease-editorial) both; }
+  .hero-context > div:nth-child(1) { animation-delay: 260ms; }
+  .hero-context > div:nth-child(2) { animation-delay: 320ms; }
+  .hero-context > div:nth-child(3) { animation-delay: 380ms; }
 
-  .moni-demo-output-panel[data-state="ready"] .moni-demo-source {
-    animation: demo-source-enter var(--duration-response) var(--ease-editorial) both;
+  html[data-motion-ready="true"] .work-handoff:not([data-viewport-revealed]) .work-handoff-rule span {
+    opacity: 0; transform: scaleX(0);
   }
-  .moni-demo-output-panel[data-state="ready"] .moni-demo-causal-rule::before {
-    animation: demo-rule-enter 300ms var(--ease-editorial) 80ms both;
+  html[data-motion-ready="true"] .work-handoff:not([data-viewport-revealed]) .work-marker {
+    opacity: 0; transform: translateX(-2rem);
   }
-  .moni-demo-output-panel[data-state="ready"] .moni-demo-result {
-    animation: demo-result-enter var(--duration-editorial) var(--ease-editorial) 120ms both;
+  html[data-motion-ready="true"] .work-handoff:not([data-viewport-revealed]) .work-heading h2 {
+    opacity: 0; clip-path: inset(0 0 100% 0); transform: translateY(4rem);
   }
-  .moni-demo-output-panel[data-state="ready"] .moni-demo-result dl div {
-    animation: demo-field-enter 300ms var(--ease-editorial) both;
+  html[data-motion-ready="true"] .work-handoff:not([data-viewport-revealed]) .work-lead,
+  html[data-motion-ready="true"] .work-handoff:not([data-viewport-revealed]) .work-narrative {
+    opacity: 0; transform: translateY(.75rem);
   }
-  .moni-demo-output-panel[data-state="ready"] .moni-demo-result dl div:nth-child(1) { animation-delay: 200ms; }
-  .moni-demo-output-panel[data-state="ready"] .moni-demo-result dl div:nth-child(2) { animation-delay: 240ms; }
-  .moni-demo-output-panel[data-state="ready"] .moni-demo-result dl div:nth-child(3) { animation-delay: 280ms; }
-  .moni-demo-output-panel[data-state="ready"] .moni-demo-result dl div:nth-child(4) { animation-delay: 320ms; }
-  .moni-demo-output-panel[data-state="ready"] .moni-demo-result dl div:nth-child(5) { animation-delay: 360ms; }
-  .moni-demo-output-panel[data-state="ready"] .moni-demo-persistence {
-    animation: demo-field-enter var(--duration-deliberate) var(--ease-editorial) 420ms both;
+  .work-handoff[data-viewport-revealed] .work-handoff-rule span {
+    animation: handoff-rule-enter 620ms var(--ease-editorial) both;
+  }
+  .work-handoff[data-viewport-revealed] .work-marker {
+    animation: handoff-marker-enter 520ms var(--ease-editorial) 60ms both;
+  }
+  .work-handoff[data-viewport-revealed] .work-heading h2 {
+    animation: handoff-title-enter 740ms var(--ease-editorial) 100ms both;
+  }
+  .work-handoff[data-viewport-revealed] .work-lead {
+    animation: editorial-rise-enter 520ms var(--ease-editorial) 240ms both;
+  }
+  .work-handoff[data-viewport-revealed] .work-narrative {
+    animation: editorial-rise-enter 540ms var(--ease-editorial) 300ms both;
   }
 
-  @supports (animation-timeline: view()) and (animation-range: entry 0% entry 100%) {
-    .work-handoff { view-timeline-name: --work-handoff; view-timeline-axis: block; }
-    .work-handoff-rule span, .work-marker, .work-heading h2 {
-      animation-duration: 1ms; animation-timing-function: linear; animation-fill-mode: both;
-      animation-timeline: --work-handoff; animation-range: entry 0% entry 72%;
-    }
-    .work-handoff-rule span { animation-name: handoff-rule-enter; }
-    .work-marker { animation-name: handoff-marker-enter; }
-    .work-heading h2 { animation-name: handoff-title-enter; }
+  html[data-motion-ready="true"] .moni-demo:not([data-viewport-revealed]) .moni-demo-source,
+  html[data-motion-ready="true"] .moni-demo:not([data-viewport-revealed]) .moni-demo-result,
+  html[data-motion-ready="true"] .moni-demo:not([data-viewport-revealed]) .moni-demo-result dl div,
+  html[data-motion-ready="true"] .moni-demo:not([data-viewport-revealed]) .moni-demo-persistence {
+    opacity: 0;
   }
+  html[data-motion-ready="true"] .moni-demo:not([data-viewport-revealed]) .moni-demo-token::after,
+  html[data-motion-ready="true"] .moni-demo:not([data-viewport-revealed]) .moni-demo-causal-rule::before {
+    opacity: 0; transform: scale(0);
+  }
+  .moni-demo[data-viewport-revealed] .moni-demo-source {
+    animation: demo-source-enter 420ms var(--ease-editorial) both;
+  }
+  .moni-demo[data-viewport-revealed] .moni-demo-token::after {
+    animation: demo-recognition-enter 340ms var(--ease-editorial) 180ms both;
+  }
+  .moni-demo[data-viewport-revealed] .moni-demo-causal-rule::before {
+    animation: demo-rule-enter 360ms var(--ease-editorial) 420ms both;
+  }
+  .moni-demo[data-viewport-revealed] .moni-demo-result {
+    animation: demo-result-enter 480ms var(--ease-editorial) 560ms both;
+  }
+  .moni-demo[data-viewport-revealed] .moni-demo-result dl div {
+    animation: demo-field-enter 360ms var(--ease-editorial) both;
+  }
+  .moni-demo[data-viewport-revealed] .moni-demo-result dl div:nth-child(1) { animation-delay: 640ms; }
+  .moni-demo[data-viewport-revealed] .moni-demo-result dl div:nth-child(2) { animation-delay: 700ms; }
+  .moni-demo[data-viewport-revealed] .moni-demo-result dl div:nth-child(3) { animation-delay: 820ms; }
+  .moni-demo[data-viewport-revealed] .moni-demo-result dl div:nth-child(4) { animation-delay: 880ms; }
+  .moni-demo[data-viewport-revealed] .moni-demo-result dl div:nth-child(5) { animation-delay: 1000ms; }
+  .moni-demo[data-viewport-revealed] .moni-demo-persistence {
+    animation: demo-field-enter 320ms var(--ease-editorial) 1060ms both;
+  }
+
+  html[data-motion-ready="true"] .workflow-figure:not([data-viewport-revealed]) .workflow-node,
+  html[data-motion-ready="true"] .workflow-figure:not([data-viewport-revealed]) .workflow-fallback {
+    opacity: 0; transform: translateY(.625rem);
+  }
+  html[data-motion-ready="true"] .workflow-figure:not([data-viewport-revealed]) .workflow-connectors path {
+    opacity: 0; stroke-dashoffset: 1;
+  }
+  .workflow-figure[data-viewport-revealed] .workflow-node {
+    animation: workflow-node-enter 320ms var(--ease-editorial) both;
+  }
+  .workflow-figure[data-viewport-revealed] .workflow-node:nth-child(1) { animation-delay: 0ms; }
+  .workflow-figure[data-viewport-revealed] .workflow-node:nth-child(2) { animation-delay: 180ms; }
+  .workflow-figure[data-viewport-revealed] .workflow-fallback {
+    animation: workflow-node-enter 320ms var(--ease-editorial) 340ms both;
+  }
+  .workflow-figure[data-viewport-revealed] .workflow-node:nth-child(3) { animation-delay: 560ms; }
+  .workflow-figure[data-viewport-revealed] .workflow-node:nth-child(4) { animation-delay: 780ms; }
+  .workflow-figure[data-viewport-revealed] .workflow-node:nth-child(5) { animation-delay: 1000ms; }
+  .workflow-figure[data-viewport-revealed] .workflow-connectors path {
+    animation: workflow-connector-enter 220ms linear both;
+  }
+  .workflow-figure[data-viewport-revealed] .connector-primary-1 { animation-delay: 100ms; }
+  .workflow-figure[data-viewport-revealed] .connector-fallback { animation-delay: 320ms; }
+  .workflow-figure[data-viewport-revealed] .connector-primary-2 { animation-delay: 500ms; }
+  .workflow-figure[data-viewport-revealed] .connector-primary-3 { animation-delay: 720ms; }
+  .workflow-figure[data-viewport-revealed] .connector-primary-4 { animation-delay: 940ms; }
 }
 
 @media (prefers-reduced-motion: reduce) {
