@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import type { FormEvent } from "react";
 import type { HomeContent } from "@/content/home";
 import {
@@ -20,6 +20,16 @@ export function MoniInterpretationDemo({ content }: { content: DemoContent }) {
   const [interpretation, setInterpretation] = useState<MoniDemoInterpretation | null>(null);
   const [error, setError] = useState("");
   const [run, setRun] = useState(0);
+  const [announcement, setAnnouncement] = useState("");
+  const announcementTimeout = useRef<number | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (announcementTimeout.current !== null) {
+        window.clearTimeout(announcementTimeout.current);
+      }
+    };
+  }, []);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -27,6 +37,11 @@ export function MoniInterpretationDemo({ content }: { content: DemoContent }) {
     const parsed = parseMoniDemo(input);
 
     if (!parsed) {
+      if (announcementTimeout.current !== null) {
+        window.clearTimeout(announcementTimeout.current);
+        announcementTimeout.current = null;
+      }
+      setAnnouncement("");
       setInterpretation(null);
       setError(content.invalidMessage);
       return;
@@ -35,6 +50,16 @@ export function MoniInterpretationDemo({ content }: { content: DemoContent }) {
     setError("");
     setInterpretation(parsed);
     setRun((current) => current + 1);
+    setAnnouncement("");
+
+    if (announcementTimeout.current !== null) {
+      window.clearTimeout(announcementTimeout.current);
+    }
+
+    announcementTimeout.current = window.setTimeout(() => {
+      setAnnouncement(content.announcement);
+      announcementTimeout.current = null;
+    }, 50);
   }
 
   const fields = interpretation
@@ -127,8 +152,8 @@ export function MoniInterpretationDemo({ content }: { content: DemoContent }) {
         <small>{content.disclaimer}</small>
       </figcaption>
 
-      <p key={run} className="sr-only" aria-live="polite" aria-atomic="true">
-        {interpretation ? content.announcement : ""}
+      <p className="sr-only" aria-live="polite" aria-atomic="true">
+        {announcement}
       </p>
     </figure>
   );

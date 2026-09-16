@@ -206,7 +206,7 @@ button { color: inherit; font: inherit; }
 }
 .hero-context div:first-child dd { font-size: clamp(1.375rem, 1.2rem + .75vw, 1.75rem); }
 
-.work-section { position: relative; overflow: hidden; background: var(--color-surface); }
+.work-section { position: relative; overflow: hidden; background: var(--color-canvas); }
 .work-shell { padding-top: var(--space-16); padding-bottom: var(--section-space); }
 .work-handoff-rule {
   position: relative; width: min(100%, var(--content-max)); height: 1px; margin: 0 auto var(--space-12);
