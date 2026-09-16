@@ -83,26 +83,71 @@ export function HomePage({ content }: { content: HomeContent }) {
           </div>
         </section>
 
-        <section id="about" className="section-shell quiet-section" aria-labelledby="about-title">
+        <section
+          id="about"
+          className="section-shell about-section"
+          aria-labelledby="about-title"
+          data-viewport-reveal="about"
+        >
+          <div className="about-handoff-rule" aria-hidden="true">
+            <span />
+          </div>
+          <div className="about-marker">
+            <span aria-hidden="true">03</span>
+            <p>{content.about.sectionLabel}</p>
+          </div>
           <div className="editorial-grid about-grid">
-            <div>
-              <p className="section-kicker">{content.about.sectionLabel}</p>
-              <h2 id="about-title">{content.about.title}</h2>
+            <div className="about-heading">
+              <h2 id="about-title">
+                <span className="sr-only">{content.about.title}</span>
+                <span aria-hidden="true">
+                  {content.about.headlineLines.map((line) => (
+                    <span className="about-title-line" key={line}>
+                      <span>{line}</span>
+                    </span>
+                  ))}
+                </span>
+              </h2>
             </div>
             <div className="about-content">
+              <dl className="about-context-list">
+                {content.about.contexts.map((item) => (
+                  <div key={item.label}>
+                    <dt>{item.label}</dt>
+                    <dd>{item.value}</dd>
+                  </div>
+                ))}
+              </dl>
               <p className="about-bio">{content.about.bio}</p>
-              <p className="about-support">{content.about.supportingLine}</p>
             </div>
           </div>
         </section>
 
-        <section id="contact" className="section-shell contact-section" aria-labelledby="contact-title">
-          <p className="section-kicker">{content.contact.sectionLabel}</p>
+        <section
+          id="contact"
+          className="section-shell contact-section"
+          aria-labelledby="contact-title"
+          data-viewport-reveal="contact"
+        >
+          <div className="contact-marker">
+            <span aria-hidden="true">04</span>
+            <p>{content.contact.sectionLabel}</p>
+          </div>
           <div className="contact-content">
-            <h2 id="contact-title">{content.contact.title}</h2>
-            <p>{content.contact.body}</p>
+            <h2 id="contact-title">
+              <span className="sr-only">{content.contact.title}</span>
+              <span aria-hidden="true">
+                {content.contact.headlineLines.map((line) => (
+                  <span className="contact-title-line" key={line}>
+                    <span>{line}</span>
+                  </span>
+                ))}
+              </span>
+            </h2>
+            <p className="contact-support">{content.contact.body}</p>
             <a className="contact-link" href={`mailto:${EMAIL}`}>
-              {content.contact.emailLabel} <Arrow />
+              <span>{content.contact.emailLabel}</span>
+              <Arrow />
             </a>
           </div>
         </section>

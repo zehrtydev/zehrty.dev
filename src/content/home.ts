@@ -73,12 +73,14 @@ export type HomeContent = {
   about: {
     sectionLabel: string;
     title: string;
+    headlineLines: string[];
     bio: string;
-    supportingLine: string;
+    contexts: Array<{ label: string; value: string }>;
   };
   contact: {
     sectionLabel: string;
     title: string;
+    headlineLines: string[];
     body: string;
     emailLabel: string;
   };
@@ -192,14 +194,20 @@ export const homeEs: HomeContent = {
   about: {
     sectionLabel: "Sobre mí",
     title: "Aprender mientras construyo.",
+    headlineLines: ["Aprender", "mientras", "construyo."],
     bio:
       "Estudio Ingeniería de Sistemas en la UNAD mientras me formo en Programación e Inteligencia Artificial en Campuslands y continúo aprendiendo inglés. Trabajo como Auxiliar de Sistemas en Petrocasinos S.A. Me atraen los proyectos que me obligan a salir de lo conocido, investigar y aprender mientras construyo soluciones reales.",
-    supportingLine:
-      "UNAD · Campuslands · Inglés en curso · Auxiliar de Sistemas en Petrocasinos S.A.",
+    contexts: [
+      { label: "UNAD", value: "Ingeniería de Sistemas" },
+      { label: "Campuslands", value: "Programación / Inteligencia Artificial" },
+      { label: "Inglés", value: "En curso" },
+      { label: "Petrocasinos S.A.", value: "Auxiliar de Sistemas" },
+    ],
   },
   contact: {
     sectionLabel: "Contacto",
     title: "Hablemos de un problema que valga la pena resolver.",
+    headlineLines: ["Hablemos de un", "problema que", "valga la pena", "resolver."],
     body: "Si mi forma de construir encaja con lo que tienes en mente, escríbeme.",
     emailLabel: "Escribir a soporte@zehrty.dev",
   },
@@ -307,14 +315,20 @@ export const homeEn: HomeContent = {
   about: {
     sectionLabel: "About",
     title: "Learning by building.",
+    headlineLines: ["Learning", "by building."],
     bio:
       "I study Systems Engineering at UNAD while training in Programming and Artificial Intelligence at Campuslands and continuing to learn English. I work as an IT Assistant at Petrocasinos S.A. I’m drawn to projects that push me beyond what I already know, requiring me to investigate and learn while building real solutions.",
-    supportingLine:
-      "UNAD · Campuslands · English studies in progress · IT Assistant at Petrocasinos S.A.",
+    contexts: [
+      { label: "UNAD", value: "Systems Engineering" },
+      { label: "Campuslands", value: "Programming / Artificial Intelligence" },
+      { label: "English", value: "In progress" },
+      { label: "Petrocasinos S.A.", value: "IT Assistant" },
+    ],
   },
   contact: {
     sectionLabel: "Contact",
     title: "Let’s talk about a problem worth solving.",
+    headlineLines: ["Let’s talk about", "a problem", "worth solving."],
     body: "If the way I build fits what you have in mind, send me a message.",
     emailLabel: "Email soporte@zehrty.dev",
   },
