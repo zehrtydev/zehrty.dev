@@ -6,13 +6,21 @@ export function MoniArchitectureDiagram({
   architecture: MoniCaseStudyContent["architecture"];
 }) {
   return (
-    <figure className="architecture-figure" aria-labelledby="architecture-diagram-title">
+    <figure
+      className="architecture-figure"
+      aria-labelledby="architecture-diagram-title"
+      aria-describedby="architecture-diagram-summary"
+    >
       <figcaption id="architecture-diagram-title" className="case-diagram-label">
         {architecture.systemLabel}
       </figcaption>
-      <ol className="architecture-flow">
-        {architecture.nodes.map((node) => (
+      <p id="architecture-diagram-summary" className="sr-only">
+        {architecture.systemSummary}
+      </p>
+      <ol className="architecture-flow" aria-hidden="true">
+        {architecture.nodes.map((node, index) => (
           <li key={node.label}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
             <strong>{node.label}</strong>
             {node.details ? (
               <ul>

@@ -37,8 +37,11 @@ export type MoniCaseStudyContent = SiteNavigationContent & {
   };
   flow: {
     title: string;
+    reviewTitle: string;
+    structuredTitle: string;
     opening: string;
     diagramLabel: string;
+    diagramSummary: string;
     messageLabel: string;
     message: string;
     parserLabel: string;
@@ -54,7 +57,8 @@ export type MoniCaseStudyContent = SiteNavigationContent & {
     draft: LabeledValue[];
     reviewLabel: string;
     reviewDetail: string;
-    actions: string[];
+    reviewSummary: string;
+    actions: Array<{ label: string; detail: string; persists: boolean }>;
     persistenceLabel: string;
     persistenceDetail: string;
     explanations: LabeledDetail[];
@@ -62,8 +66,10 @@ export type MoniCaseStudyContent = SiteNavigationContent & {
   };
   architecture: {
     title: string;
+    developmentTitle: string;
     body: string;
     systemLabel: string;
+    systemSummary: string;
     nodes: Array<{ label: string; details?: string[] }>;
     operationsLabel: string;
     operations: string;
@@ -94,6 +100,7 @@ export type MoniCaseStudyContent = SiteNavigationContent & {
     currentState: string;
   };
   closing: {
+    eyebrow: string;
     statement: string;
     body: string;
     productCta: string;
@@ -119,11 +126,11 @@ export const moniEs: MoniCaseStudyContent = {
     languageLabel: "Idioma",
   },
   hero: {
-    eyebrow: "CASE STUDY / 01",
+    eyebrow: "01 / CASE STUDY",
     title: "MONI",
     descriptor: "Asistente financiero por WhatsApp.",
     intro:
-      "Un producto que nació para reducir la fricción de registrar gastos y terminó convirtiéndose en mi primer sistema real operando con múltiples usuarios.",
+      "Un producto que nació para reducir la fricción de registrar gastos y hoy opera con múltiples usuarios.",
     metadata: "Producto personal · Full-stack · IA aplicada · Producción",
     productCta: "Visitar Moni ↗",
     exploreCta: "Explorar el caso ↓",
@@ -147,7 +154,7 @@ export const moniEs: MoniCaseStudyContent = {
       "El problema no era almacenar los gastos. Era lograr que registrarlos requiriera el menor esfuerzo posible.",
   },
   decision: {
-    title: "02 — La decisión de producto",
+    title: "02 — La entrada",
     paragraphs: [
       "En lugar de construir primero otra interfaz para capturar movimientos, decidí llevar la entrada de datos a una herramienta que el usuario ya utiliza constantemente: WhatsApp.",
       "La decisión no buscaba reemplazar por completo una aplicación financiera. Buscaba separar dos necesidades diferentes.",
@@ -174,10 +181,14 @@ export const moniEs: MoniCaseStudyContent = {
       "No necesitaba que el usuario aprendiera un nuevo hábito para registrar un gasto. Necesitaba integrar el registro en uno que ya existía.",
   },
   flow: {
-    title: "03 — Del mensaje al dato",
+    title: "03 — Pipeline de interpretación",
+    reviewTitle: "04 — Revisión antes de persistir",
+    structuredTitle: "05 — Datos estructurados",
     opening:
       "Un mensaje sencillo puede terminar convertido en una transacción estructurada, pero antes pasa por varias capas.",
-    diagramLabel: "Flujo de interpretación y persistencia",
+    diagramLabel: "Flujo de interpretación",
+    diagramSummary:
+      "El mensaje pasa primero por el parser determinista. Solo si esa ruta no es suficiente se utiliza el fallback con IA. Ambas rutas conducen a una interpretación estructurada.",
     messageLabel: "Mensaje de WhatsApp",
     message: "10000 en comida",
     parserLabel: "Parser determinista",
@@ -194,12 +205,17 @@ export const moniEs: MoniCaseStudyContent = {
       { label: "amount", value: "10000" },
       { label: "type", value: "expense" },
       { label: "category", value: "food" },
-      { label: "date", value: "inferred" },
-      { label: "status", value: "pending" },
+      { label: "date", value: "No especificada" },
     ],
     reviewLabel: "Revisión del usuario",
     reviewDetail: "La interpretación todavía no se guarda.",
-    actions: ["Confirmar", "Corregir", "Cancelar"],
+    reviewSummary:
+      "Después de la interpretación, el usuario revisa el resultado y puede confirmar, corregir o cancelar. Solo confirmar continúa hacia la persistencia; corregir y cancelar no persisten datos.",
+    actions: [
+      { label: "Confirmar", detail: "Continúa al registro", persists: true },
+      { label: "Corregir", detail: "Vuelve al ajuste", persists: false },
+      { label: "Cancelar", detail: "Finaliza sin guardar", persists: false },
+    ],
     persistenceLabel: "Persistencia",
     persistenceDetail: "Solo la confirmación continúa al registro.",
     explanations: [
@@ -211,19 +227,22 @@ export const moniEs: MoniCaseStudyContent = {
       "Interpretar no es lo mismo que decidir. Moni puede proponer una transacción; el usuario decide si se guarda.",
   },
   architecture: {
-    title: "04 — Cómo está construido",
+    title: "06 — Sistema e ingeniería",
+    developmentTitle: "07 — Enfoque de desarrollo",
     body:
       "La arquitectura de Moni gira alrededor de dos experiencias: capturar información rápidamente y consultarla con profundidad.",
-    systemLabel: "SYSTEM MONI",
+    systemLabel: "MODELO CONCEPTUAL DEL SISTEMA",
+    systemSummary:
+      "Modelo conceptual: WhatsApp conduce a la lógica de Moni, donde el parser determinista se intenta primero y la IA actúa solo como fallback. La confirmación del usuario ocurre antes de Supabase, y el dashboard permite consultar y analizar la información.",
     nodes: [
       { label: "WhatsApp" },
       { label: "Lógica de Moni", details: ["Parser determinista", "Fallback con IA", "Validación del flujo"] },
       { label: "Confirmación del usuario" },
-      { label: "Supabase", details: ["Datos", "Autenticación"] },
+      { label: "Supabase" },
       { label: "Dashboard web", details: ["Consulta", "Análisis"] },
     ],
     operationsLabel: "CAPA DE OPERACIÓN",
-    operations: "Producción · VPS · Linux · Operación continua",
+    operations: "Producción · VPS · Linux · Despliegue",
     roleLabel: "Mi papel",
     role: "Producto · Arquitectura · Desarrollo full-stack · Despliegue",
     aiUse: [
@@ -260,11 +279,9 @@ export const moniEs: MoniCaseStudyContent = {
       "Linux",
       "VPS",
       "Dominio + DNS",
-      "Variables de entorno",
-      "Procesos persistentes",
-      "Autenticación",
-      "Conectividad",
-      "Servicios externos",
+      "Despliegue",
+      "Supabase",
+      "Resend",
     ],
     statement:
       "Llegar a producción no fue solo desplegar el mismo código en otro lugar. Fue empezar a operar un sistema.",
@@ -272,7 +289,7 @@ export const moniEs: MoniCaseStudyContent = {
       "Moni dejó de ser un proyecto que yo ejecutaba para convertirse en un servicio que debía seguir funcionando aunque yo no estuviera frente al computador.",
   },
   users: {
-    title: "06 — Cuando aparecieron usuarios reales",
+    title: "08 — Estado actual",
     opening: [
       "Moni comenzó diseñado alrededor de mi propia forma de registrar gastos.",
       "Eso dejó de ser suficiente cuando otras personas comenzaron a utilizarlo.",
@@ -311,6 +328,7 @@ export const moniEs: MoniCaseStudyContent = {
       "Producción · 6 usuarios reales · Flujo principal operativo · Dashboard disponible · En evolución",
   },
   closing: {
+    eyebrow: "09 / CIERRE",
     statement: "MONI SIGUE FUNCIONANDO.",
     body:
       "Lo que comenzó como una herramienta personal hoy es un producto real en producción que sigo utilizando, manteniendo y evolucionando.",
@@ -337,11 +355,11 @@ export const moniEn: MoniCaseStudyContent = {
     languageLabel: "Language",
   },
   hero: {
-    eyebrow: "CASE STUDY / 01",
+    eyebrow: "01 / CASE STUDY",
     title: "MONI",
     descriptor: "A financial assistant on WhatsApp.",
     intro:
-      "A product that began as a way to reduce the friction of logging expenses and became my first real system serving multiple users.",
+      "A product that began as a way to reduce the friction of logging expenses and now serves multiple users.",
     metadata: "Personal product · Full-stack · Applied AI · Production",
     productCta: "Visit Moni ↗",
     exploreCta: "Explore the case ↓",
@@ -365,7 +383,7 @@ export const moniEn: MoniCaseStudyContent = {
       "The problem was not storing expenses. It was making each record require as little effort as possible.",
   },
   decision: {
-    title: "02 — The product decision",
+    title: "02 — The input",
     paragraphs: [
       "Instead of first building another interface for capturing transactions, I moved data entry into a tool people already use constantly: WhatsApp.",
       "The goal was not to replace a finance application completely. It was to separate two distinct needs.",
@@ -392,10 +410,14 @@ export const moniEn: MoniCaseStudyContent = {
       "The user did not need to learn a new habit to log an expense. The product needed to fit into one that already existed.",
   },
   flow: {
-    title: "03 — From message to data",
+    title: "03 — Interpretation pipeline",
+    reviewTitle: "04 — Review before persistence",
+    structuredTitle: "05 — Structured data",
     opening:
       "A simple message can become a structured transaction, but it passes through several layers first.",
-    diagramLabel: "Interpretation and persistence flow",
+    diagramLabel: "Interpretation flow",
+    diagramSummary:
+      "The message goes through deterministic parsing first. AI fallback is used only when that route is insufficient. Both routes lead to a structured interpretation.",
     messageLabel: "WhatsApp message",
     message: "10000 en comida",
     parserLabel: "Deterministic parser",
@@ -412,12 +434,17 @@ export const moniEn: MoniCaseStudyContent = {
       { label: "amount", value: "10000" },
       { label: "type", value: "expense" },
       { label: "category", value: "food" },
-      { label: "date", value: "inferred" },
-      { label: "status", value: "pending" },
+      { label: "date", value: "Unspecified" },
     ],
     reviewLabel: "User review",
     reviewDetail: "The interpretation has not been saved yet.",
-    actions: ["Confirm", "Correct", "Cancel"],
+    reviewSummary:
+      "After interpretation, the user reviews the result and can confirm, correct, or cancel. Only confirmation continues to persistence; correction and cancellation do not persist data.",
+    actions: [
+      { label: "Confirm", detail: "Continues to the record", persists: true },
+      { label: "Correct", detail: "Returns for adjustment", persists: false },
+      { label: "Cancel", detail: "Ends without saving", persists: false },
+    ],
     persistenceLabel: "Persistence",
     persistenceDetail: "Only confirmation continues to the final record.",
     explanations: [
@@ -429,19 +456,22 @@ export const moniEn: MoniCaseStudyContent = {
       "Interpretation is not the same as a decision. Moni can propose a transaction; the user decides whether it is saved.",
   },
   architecture: {
-    title: "04 — How it is built",
+    title: "06 — System and engineering",
+    developmentTitle: "07 — Development approach",
     body:
       "Moni’s architecture revolves around two experiences: capturing information quickly and reviewing it in depth.",
-    systemLabel: "SYSTEM MONI",
+    systemLabel: "CONCEPTUAL SYSTEM MODEL",
+    systemSummary:
+      "Conceptual model: WhatsApp leads to Moni application logic, where deterministic parsing is attempted first and AI acts only as fallback. User confirmation happens before Supabase, and the dashboard provides review and analysis.",
     nodes: [
       { label: "WhatsApp" },
       { label: "Moni application logic", details: ["Deterministic parser", "AI fallback", "Flow validation"] },
       { label: "User confirmation" },
-      { label: "Supabase", details: ["Data", "Authentication"] },
+      { label: "Supabase" },
       { label: "Web dashboard", details: ["Review", "Analysis"] },
     ],
     operationsLabel: "OPERATIONS LAYER",
-    operations: "Production · VPS · Linux · Continuous operation",
+    operations: "Production · VPS · Linux · Deployment",
     roleLabel: "My role",
     role: "Product · Architecture · Full-stack development · Deployment",
     aiUse: [
@@ -478,11 +508,9 @@ export const moniEn: MoniCaseStudyContent = {
       "Linux",
       "VPS",
       "Domain + DNS",
-      "Environment variables",
-      "Persistent processes",
-      "Authentication",
-      "Connectivity",
-      "External services",
+      "Deployment",
+      "Supabase",
+      "Resend",
     ],
     statement:
       "Reaching production was not just deploying the same code somewhere else. It meant beginning to operate a system.",
@@ -490,7 +518,7 @@ export const moniEn: MoniCaseStudyContent = {
       "Moni stopped being a project I ran and became a service that had to keep working when I was away from my computer.",
   },
   users: {
-    title: "06 — When real users arrived",
+    title: "08 — Current state",
     opening: [
       "Moni was initially designed around the way I log expenses.",
       "That stopped being enough when other people began using it.",
@@ -529,6 +557,7 @@ export const moniEn: MoniCaseStudyContent = {
       "Production · 6 real users · Core flow operational · Dashboard available · Evolving",
   },
   closing: {
+    eyebrow: "09 / CLOSING",
     statement: "MONI IS STILL RUNNING.",
     body:
       "What began as a personal tool is now a real product in production that I continue to use, maintain, and evolve.",
