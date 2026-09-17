@@ -33,7 +33,6 @@ export type HomeContent = {
     demo: {
       title: string;
       inputLabel: string;
-      inputHint: string;
       submitLabel: string;
       sourceLabel: string;
       resultLabel: string;
@@ -56,7 +55,6 @@ export type HomeContent = {
       captionLabel: string;
       caption: string;
       disclaimer: string;
-      invalidMessage: string;
       announcement: string;
     };
     workflowTitle: string;
@@ -141,8 +139,7 @@ export const homeEs: HomeContent = {
     demo: {
       title: "Demostración de interpretación",
       inputLabel: "Mensaje de ejemplo",
-      inputHint: "Esta demostración local reconoce únicamente la frase incluida.",
-      submitLabel: "Interpretar",
+      submitLabel: "Ver interpretación",
       sourceLabel: "Frase de origen",
       resultLabel: "Interpretación estructurada",
       idleMessage: "Envía el mensaje de ejemplo para revelar su interpretación.",
@@ -166,7 +163,6 @@ export const homeEs: HomeContent = {
         "La frase se representa como monto, categoría, tipo, fecha y estado de revisión.",
       disclaimer:
         "Representación local de demostración. No se comunica con Moni ni guarda una transacción.",
-      invalidMessage: "Usa la frase de demostración: “10000 en comida”.",
       announcement:
         "Interpretación mostrada: monto 10000, categoría Comida, tipo Gasto, fecha no especificada e inferida, pendiente de revisión. No guardado.",
     },
@@ -262,8 +258,7 @@ export const homeEn: HomeContent = {
     demo: {
       title: "Interpretation demonstration",
       inputLabel: "Example message",
-      inputHint: "This local demonstration recognizes only the included phrase.",
-      submitLabel: "Interpret",
+      submitLabel: "View interpretation",
       sourceLabel: "Source phrase",
       resultLabel: "Structured interpretation",
       idleMessage: "Submit the example message to reveal its interpretation.",
@@ -287,7 +282,6 @@ export const homeEn: HomeContent = {
         "The phrase is represented as an amount, category, type, date, and review state.",
       disclaimer:
         "Local demonstration only. It does not contact Moni or save a transaction.",
-      invalidMessage: "Use the demonstration phrase: “10000 en comida”.",
       announcement:
         "Interpretation shown: amount 10000, category Food, type Expense, date unspecified and inferred, pending review. Not saved.",
     },

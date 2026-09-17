@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import type { FormEvent } from "react";
 import type { HomeContent } from "@/content/home";
 import {
   MONI_DEMO_SOURCE,
@@ -12,15 +11,12 @@ import {
 type DemoContent = HomeContent["work"]["demo"];
 
 export function MoniInterpretationDemo({ content }: { content: DemoContent }) {
-  const inputId = useId();
-  const hintId = useId();
-  const errorId = useId();
+  const exampleLabelId = useId();
+  const resultId = useId();
   const captionId = useId();
-  const [input, setInput] = useState(MONI_DEMO_SOURCE);
-  const [interpretation, setInterpretation] = useState<MoniDemoInterpretation | null>(() =>
+  const [interpretation] = useState<MoniDemoInterpretation | null>(() =>
     parseMoniDemo(MONI_DEMO_SOURCE),
   );
-  const [error, setError] = useState("");
   const [run, setRun] = useState(0);
   const [announcement, setAnnouncement] = useState("");
   const announcementTimeout = useRef<number | null>(null);
@@ -33,24 +29,7 @@ export function MoniInterpretationDemo({ content }: { content: DemoContent }) {
     };
   }, []);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-
-    const parsed = parseMoniDemo(input);
-
-    if (!parsed) {
-      if (announcementTimeout.current !== null) {
-        window.clearTimeout(announcementTimeout.current);
-        announcementTimeout.current = null;
-      }
-      setAnnouncement("");
-      setInterpretation(null);
-      setError(content.invalidMessage);
-      return;
-    }
-
-    setError("");
-    setInterpretation(parsed);
+  function handleReplay() {
     setRun((current) => current + 1);
     setAnnouncement("");
 
@@ -95,36 +74,27 @@ export function MoniInterpretationDemo({ content }: { content: DemoContent }) {
       <div className="moni-demo-grid">
         <div className="moni-demo-input-panel">
           <p className="moni-demo-kicker">{content.title}</p>
-          <form onSubmit={handleSubmit} noValidate>
-            <label htmlFor={inputId}>{content.inputLabel}</label>
-            <div className="moni-demo-control">
-              <input
-                id={inputId}
-                name="moni-demo-message"
-                value={input}
-                onChange={(event) => setInput(event.target.value)}
-                aria-describedby={`${hintId}${error ? ` ${errorId}` : ""}`}
-                aria-invalid={error ? true : undefined}
-                autoComplete="off"
-                spellCheck="false"
-              />
-              <button className="button button-primary" type="submit">
-                {content.submitLabel}
-                <span aria-hidden="true">→</span>
-              </button>
+          <div className="moni-demo-guide">
+            <div className="moni-demo-example" role="group" aria-labelledby={exampleLabelId}>
+              <span id={exampleLabelId}>{content.inputLabel}</span>
+              <p lang="es">{MONI_DEMO_SOURCE}</p>
             </div>
-            <p id={hintId} className="moni-demo-hint">
-              {content.inputHint}
-            </p>
-            {error ? (
-              <p id={errorId} className="moni-demo-error" role="alert">
-                {error}
-              </p>
-            ) : null}
-          </form>
+            <button
+              className="button button-primary"
+              type="button"
+              aria-controls={resultId}
+              onClick={handleReplay}
+            >
+              {content.submitLabel}
+            </button>
+          </div>
         </div>
 
-        <div className="moni-demo-output-panel" data-state={interpretation ? "ready" : "idle"}>
+        <div
+          id={resultId}
+          className="moni-demo-output-panel"
+          data-state={interpretation ? "ready" : "idle"}
+        >
           {interpretation ? (
             <div key={run} className="moni-demo-sequence">
               <div className="moni-demo-source">
