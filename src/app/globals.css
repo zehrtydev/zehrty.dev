@@ -273,17 +273,17 @@ button { color: inherit; font: inherit; }
 .moni-demo-idle { max-width: 24ch; margin: 0; color: var(--color-muted); text-align: center; }
 .moni-demo-sequence { display: grid; width: 100%; }
 .moni-demo-source { display: grid; gap: var(--space-3); min-width: 0; }
-.moni-demo-source span, .moni-demo-persistence span {
+.moni-demo-source-label, .moni-demo-persistence span {
   color: var(--color-muted); font-size: .8125rem; font-weight: 600;
   line-height: 1.35; letter-spacing: .08em; text-transform: uppercase;
 }
-.moni-demo-source strong {
-  overflow-wrap: anywhere; font-family: var(--font-sora), sans-serif;
-  font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.25rem); line-height: 1.1; letter-spacing: -.025em;
+.moni-demo-phrase {
+  margin: 0; overflow-wrap: anywhere; font-family: var(--font-inter), sans-serif;
+  font-size: clamp(1.125rem, 1.05rem + .25vw, 1.25rem); font-weight: 500; line-height: 1.4; letter-spacing: -.01em;
 }
-.moni-demo-token { position: relative; display: inline-block; }
+.moni-demo-token { position: relative; display: inline-block; font-weight: 600; }
 .moni-demo-token::after {
-  position: absolute; right: 0; bottom: -.2em; left: 0; height: 2px;
+  position: absolute; right: 0; bottom: .05em; left: 0; height: 1px;
   background: var(--color-accent); content: ""; transform-origin: left;
 }
 .moni-demo-causal-rule { position: relative; display: grid; height: var(--space-16); place-items: center; color: var(--color-accent); }
@@ -291,7 +291,11 @@ button { color: inherit; font: inherit; }
   position: absolute; top: 0; bottom: 0; left: 50%; width: 1px;
   background: var(--color-accent); content: ""; transform-origin: top;
 }
-.moni-demo-causal-rule span { position: relative; z-index: 1; padding: 0 var(--space-2); background: var(--color-surface); font-weight: 700; transform: rotate(90deg); }
+.moni-demo-causal-rule::after {
+  position: absolute; bottom: .125rem; left: 50%; width: .4rem; height: .4rem;
+  border-right: 1px solid var(--color-accent); border-bottom: 1px solid var(--color-accent);
+  content: ""; transform: translateX(-50%) rotate(45deg);
+}
 .moni-demo-result { min-width: 0; padding: var(--space-6); border: 1px solid var(--color-border-strong); background: var(--color-canvas); }
 .moni-demo-result dl { display: grid; margin: var(--space-4) 0 0; }
 .moni-demo-result dl div {
@@ -767,7 +771,7 @@ button { color: inherit; font: inherit; }
   .moni-demo-sequence { grid-template-columns: minmax(0, .8fr) var(--space-12) minmax(0, 1.35fr); align-items: center; }
   .moni-demo-causal-rule { width: var(--space-12); height: 1px; }
   .moni-demo-causal-rule::before { top: 0; right: 0; bottom: auto; left: 0; width: 100%; height: 1px; transform-origin: left; }
-  .moni-demo-causal-rule span { transform: none; }
+  .moni-demo-causal-rule::after { top: 50%; right: .125rem; bottom: auto; left: auto; transform: translateY(-50%) rotate(-45deg); }
   .workflow-canvas { min-height: 20rem; }
   .workflow-connectors {
     position: absolute;
@@ -885,6 +889,11 @@ button { color: inherit; font: inherit; }
 @keyframes demo-rule-enter {
   from { opacity: 0; transform: scale(0); }
   to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes demo-connector-head-enter {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes demo-recognition-enter {
@@ -1034,6 +1043,9 @@ button { color: inherit; font: inherit; }
   html[data-motion-ready="true"] .moni-demo:not([data-viewport-revealed]) .moni-demo-causal-rule::before {
     opacity: 0; transform: scale(0);
   }
+  html[data-motion-ready="true"] .moni-demo:not([data-viewport-revealed]) .moni-demo-causal-rule::after {
+    opacity: 0;
+  }
   .moni-demo[data-viewport-revealed] .moni-demo-source {
     animation: demo-source-enter 420ms var(--ease-editorial) both;
   }
@@ -1042,6 +1054,9 @@ button { color: inherit; font: inherit; }
   }
   .moni-demo[data-viewport-revealed] .moni-demo-causal-rule::before {
     animation: demo-rule-enter 360ms var(--ease-editorial) 420ms both;
+  }
+  .moni-demo[data-viewport-revealed] .moni-demo-causal-rule::after {
+    animation: demo-connector-head-enter 160ms var(--ease-editorial) 680ms both;
   }
   .moni-demo[data-viewport-revealed] .moni-demo-result {
     animation: demo-result-enter 480ms var(--ease-editorial) 560ms both;

@@ -128,16 +128,15 @@ export function MoniInterpretationDemo({ content }: { content: DemoContent }) {
           {interpretation ? (
             <div key={run} className="moni-demo-sequence">
               <div className="moni-demo-source">
-                <span>{content.sourceLabel}</span>
-                <strong>
-                  “<span className="moni-demo-token">{interpretation.amount}</span> en{" "}
-                  <span className="moni-demo-token">comida</span>”
-                </strong>
+                <span className="moni-demo-source-label">{content.sourceLabel}</span>
+                <p className="moni-demo-phrase">
+                  <strong className="moni-demo-token">{interpretation.amount}</strong>
+                  {" en "}
+                  <strong className="moni-demo-token">comida</strong>
+                </p>
               </div>
 
-              <div className="moni-demo-causal-rule" aria-hidden="true">
-                <span>→</span>
-              </div>
+              <div className="moni-demo-causal-rule" aria-hidden="true" />
 
               <div className="moni-demo-result">
                 <p className="moni-demo-kicker">{content.resultLabel}</p>
