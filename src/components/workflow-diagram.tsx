@@ -7,7 +7,11 @@ export function WorkflowDiagram({ work }: { work: HomeContent["work"] }) {
   if (!fallback) return null;
 
   return (
-    <figure className="workflow-figure" aria-labelledby="workflow-title">
+    <figure
+      className="workflow-figure"
+      aria-labelledby="workflow-title"
+      data-viewport-reveal="workflow"
+    >
       <figcaption className="workflow-caption">
         <h3 id="workflow-title">{work.workflowTitle}</h3>
         <p>{work.workflowDescription}</p>
@@ -27,8 +31,11 @@ export function WorkflowDiagram({ work }: { work: HomeContent["work"] }) {
               <path d="M0 0L8 4L0 8" />
             </marker>
           </defs>
-          <path className="connector-primary" d="M155 72H212M365 72H422M575 72H632M785 72H842" />
-          <path className="connector-fallback" d="M290 140V194H500V140" />
+          <path className="connector-primary connector-primary-1" d="M155 72H212" pathLength="1" />
+          <path className="connector-primary connector-primary-2" d="M365 72H422" pathLength="1" />
+          <path className="connector-primary connector-primary-3" d="M575 72H632" pathLength="1" />
+          <path className="connector-primary connector-primary-4" d="M785 72H842" pathLength="1" />
+          <path className="connector-fallback" d="M290 140V194H500V140" pathLength="1" />
         </svg>
 
         <ol className="workflow-primary">

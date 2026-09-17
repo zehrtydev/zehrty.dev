@@ -11,10 +11,16 @@ export function SiteFooter({ counterpartHref, languageLabel }: SiteFooterProps) 
   return (
     <footer className="site-footer section-shell">
       <div className="footer-inner">
-        <span className="footer-wordmark">Zehrtydev</span>
-        <span>© {new Date().getFullYear()}</span>
-        <Link href={counterpartHref}>{languageLabel}</Link>
-        <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+        <div className="footer-signature">
+          <span className="footer-wordmark">Zehrtydev</span>
+          <span className="footer-year">© {new Date().getFullYear()}</span>
+        </div>
+        <div className="footer-utilities">
+          <Link href={counterpartHref}>{languageLabel}</Link>
+          <a className="footer-email" href={`mailto:${EMAIL}`}>
+            {EMAIL}
+          </a>
+        </div>
       </div>
     </footer>
   );

@@ -15,6 +15,7 @@ export type HomeContent = {
   };
   hero: {
     firstSentence: string;
+    headlineLines: string[];
     secondSentence: string;
     primaryCta: string;
     secondaryCta: string;
@@ -29,7 +30,33 @@ export type HomeContent = {
     example: string;
     exampleResult: string;
     visualizationLabel: string;
-    interpretation: Array<{ label: string; value: string }>;
+    demo: {
+      title: string;
+      inputLabel: string;
+      submitLabel: string;
+      sourceLabel: string;
+      resultLabel: string;
+      idleMessage: string;
+      fields: {
+        amount: string;
+        category: string;
+        transactionType: string;
+        date: string;
+        review: string;
+      };
+      values: {
+        expense: string;
+        food: string;
+        inferred: string;
+        pending: string;
+        notPersisted: string;
+      };
+      persistenceLabel: string;
+      captionLabel: string;
+      caption: string;
+      disclaimer: string;
+      announcement: string;
+    };
     workflowTitle: string;
     workflowDescription: string;
     workflow: Array<{ label: string; detail: string; emphasis?: boolean }>;
@@ -44,12 +71,14 @@ export type HomeContent = {
   about: {
     sectionLabel: string;
     title: string;
+    headlineLines: string[];
     bio: string;
-    supportingLine: string;
+    contexts: Array<{ label: string; value: string }>;
   };
   contact: {
     sectionLabel: string;
     title: string;
+    headlineLines: string[];
     body: string;
     emailLabel: string;
   };
@@ -79,6 +108,12 @@ export const homeEs: HomeContent = {
   hero: {
     firstSentence:
       "Soy desarrollador enfocado en inteligencia artificial y automatización.",
+    headlineLines: [
+      "Soy desarrollador",
+      "enfocado en",
+      "inteligencia artificial y",
+      "automatización.",
+    ],
     secondSentence:
       "Construyo productos reales para resolver problemas concretos mientras sigo creciendo como ingeniero.",
     primaryCta: "Explorar mi trabajo",
@@ -101,11 +136,36 @@ export const homeEs: HomeContent = {
     exampleResult:
       "Moni lo interpreta como datos financieros estructurados: monto, tipo de movimiento, categoría y fecha.",
     visualizationLabel: "Visualización explicativa del producto",
-    interpretation: [
-      { label: "Monto", value: "10000" },
-      { label: "Tipo", value: "Gasto" },
-      { label: "Categoría", value: "Comida" },
-    ],
+    demo: {
+      title: "Demostración de interpretación",
+      inputLabel: "Mensaje de ejemplo",
+      submitLabel: "Ver interpretación",
+      sourceLabel: "Frase de origen",
+      resultLabel: "Interpretación estructurada",
+      idleMessage: "Envía el mensaje de ejemplo para revelar su interpretación.",
+      fields: {
+        amount: "Monto",
+        category: "Categoría",
+        transactionType: "Tipo",
+        date: "Fecha",
+        review: "Revisión",
+      },
+      values: {
+        expense: "Gasto",
+        food: "Comida",
+        inferred: "No especificada (inferida)",
+        pending: "Pendiente de revisión",
+        notPersisted: "No guardado",
+      },
+      persistenceLabel: "Persistencia",
+      captionLabel: "Visualización explicativa del producto",
+      caption:
+        "La frase se representa como monto, categoría, tipo, fecha y estado de revisión.",
+      disclaimer:
+        "Representación local de demostración. No se comunica con Moni ni guarda una transacción.",
+      announcement:
+        "Interpretación mostrada: monto 10000, categoría Comida, tipo Gasto, fecha no especificada e inferida, pendiente de revisión. No guardado.",
+    },
     workflowTitle: "Del mensaje al registro",
     workflowDescription:
       "El análisis determinista ocurre primero. La inteligencia artificial interviene solo si hace falta, y ningún movimiento se guarda sin confirmación del usuario.",
@@ -130,14 +190,20 @@ export const homeEs: HomeContent = {
   about: {
     sectionLabel: "Sobre mí",
     title: "Aprender mientras construyo.",
+    headlineLines: ["Aprender", "mientras", "construyo."],
     bio:
       "Estudio Ingeniería de Sistemas en la UNAD mientras me formo en Programación e Inteligencia Artificial en Campuslands y continúo aprendiendo inglés. Trabajo como Auxiliar de Sistemas en Petrocasinos S.A. Me atraen los proyectos que me obligan a salir de lo conocido, investigar y aprender mientras construyo soluciones reales.",
-    supportingLine:
-      "UNAD · Campuslands · Inglés en curso · Auxiliar de Sistemas en Petrocasinos S.A.",
+    contexts: [
+      { label: "UNAD", value: "Ingeniería de Sistemas" },
+      { label: "Campuslands", value: "Programación / Inteligencia Artificial" },
+      { label: "Inglés", value: "En curso" },
+      { label: "Petrocasinos S.A.", value: "Auxiliar de Sistemas" },
+    ],
   },
   contact: {
     sectionLabel: "Contacto",
     title: "Hablemos de un problema que valga la pena resolver.",
+    headlineLines: ["Hablemos de un", "problema que", "valga la pena", "resolver."],
     body: "Si mi forma de construir encaja con lo que tienes en mente, escríbeme.",
     emailLabel: "Escribir a soporte@zehrty.dev",
   },
@@ -162,6 +228,12 @@ export const homeEn: HomeContent = {
   hero: {
     firstSentence:
       "I’m a developer focused on artificial intelligence and automation.",
+    headlineLines: [
+      "I’m a developer",
+      "focused on",
+      "artificial intelligence and",
+      "automation.",
+    ],
     secondSentence:
       "I build real products to solve concrete problems while continuing to grow as an engineer.",
     primaryCta: "Explore my work",
@@ -183,11 +255,36 @@ export const homeEn: HomeContent = {
     exampleResult:
       "Moni interprets it as structured financial data: amount, transaction type, category, and date.",
     visualizationLabel: "Explanatory product visualization",
-    interpretation: [
-      { label: "Amount", value: "10000" },
-      { label: "Type", value: "Expense" },
-      { label: "Category", value: "Food" },
-    ],
+    demo: {
+      title: "Interpretation demonstration",
+      inputLabel: "Example message",
+      submitLabel: "View interpretation",
+      sourceLabel: "Source phrase",
+      resultLabel: "Structured interpretation",
+      idleMessage: "Submit the example message to reveal its interpretation.",
+      fields: {
+        amount: "Amount",
+        category: "Category",
+        transactionType: "Type",
+        date: "Date",
+        review: "Review",
+      },
+      values: {
+        expense: "Expense",
+        food: "Food",
+        inferred: "Unspecified (inferred)",
+        pending: "Pending review",
+        notPersisted: "Not saved",
+      },
+      persistenceLabel: "Persistence",
+      captionLabel: "Explanatory product visualization",
+      caption:
+        "The phrase is represented as an amount, category, type, date, and review state.",
+      disclaimer:
+        "Local demonstration only. It does not contact Moni or save a transaction.",
+      announcement:
+        "Interpretation shown: amount 10000, category Food, type Expense, date unspecified and inferred, pending review. Not saved.",
+    },
     workflowTitle: "From message to record",
     workflowDescription:
       "Deterministic parsing runs first. AI steps in only when needed, and no transaction is stored without the user’s confirmation.",
@@ -212,14 +309,20 @@ export const homeEn: HomeContent = {
   about: {
     sectionLabel: "About",
     title: "Learning by building.",
+    headlineLines: ["Learning", "by building."],
     bio:
       "I study Systems Engineering at UNAD while training in Programming and Artificial Intelligence at Campuslands and continuing to learn English. I work as an IT Assistant at Petrocasinos S.A. I’m drawn to projects that push me beyond what I already know, requiring me to investigate and learn while building real solutions.",
-    supportingLine:
-      "UNAD · Campuslands · English studies in progress · IT Assistant at Petrocasinos S.A.",
+    contexts: [
+      { label: "UNAD", value: "Systems Engineering" },
+      { label: "Campuslands", value: "Programming / Artificial Intelligence" },
+      { label: "English", value: "In progress" },
+      { label: "Petrocasinos S.A.", value: "IT Assistant" },
+    ],
   },
   contact: {
     sectionLabel: "Contact",
     title: "Let’s talk about a problem worth solving.",
+    headlineLines: ["Let’s talk about", "a problem", "worth solving."],
     body: "If the way I build fits what you have in mind, send me a message.",
     emailLabel: "Email soporte@zehrty.dev",
   },
