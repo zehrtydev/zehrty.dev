@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { FiBriefcase } from "react-icons/fi";
 import { DeveloperPortrait } from "./DeveloperPortrait";
 
 const timeline = [
@@ -19,7 +18,7 @@ const timeline = [
     text: "Español nativo · Inglés B+ en formación hacia C1",
   },
   {
-    icon: "work",
+    icon: "petrocasinos",
     title: "Experiencia profesional",
     text: "4 años en soporte L1 y L2",
   },
@@ -29,11 +28,10 @@ const timelineLogos = {
   unad: { src: "/logos/unad.png", width: 3301, height: 2551 },
   campslands: { src: "/logos/campslands.svg", width: 103, height: 19 },
   ingles: { src: "/logos/ingles.webp", width: 122, height: 64 },
+  petrocasinos: { src: "/logos/petrocasinos.png", width: 200, height: 200 },
 } as const;
 
 function TimelineIcon({ kind }: { kind: (typeof timeline)[number]["icon"] }) {
-  if (kind === "work") return <FiBriefcase />;
-
   return (
     <Image
       {...timelineLogos[kind]}
