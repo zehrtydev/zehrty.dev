@@ -18,7 +18,7 @@ export function StackCard({ technology, offset, onSelect, onPreview }: Props) {
     "--offset": offset,
     "--distance": distance,
     "--direction": direction,
-    "--scale": active ? 1 : 0.85 - (distance - 1) * 0.035,
+    "--scale": active ? 1 : 0.9 - (distance - 1) * 0.037,
     "--rotation-y": `${direction * Math.min(7 + distance * 2, 18)}deg`,
     "--rotation-z": `${-direction * Math.min(distance * 1.1, 6)}deg`,
     "--card-opacity": active ? 1 : 0.94 - distance * 0.035,

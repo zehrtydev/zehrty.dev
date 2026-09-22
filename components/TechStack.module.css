@@ -27,9 +27,9 @@
 
 .header h2 {
   margin: 0;
-  font-size: clamp(34px, 3.65vw, 62px);
-  font-weight: 430;
-  line-height: 1.14;
+  font-size: clamp(36px, 3.9vw, 66px);
+  font-weight: 450;
+  line-height: 1.12;
   letter-spacing: -0.04em;
   text-wrap: balance;
 }
@@ -84,7 +84,7 @@
   transform: translateX(0) translateY(0) rotateY(0) rotateZ(0) scale(1);
   border-color: var(--accent);
   background: radial-gradient(ellipse at 100% 0%, rgba(255, 90, 54, 0.13), transparent 48%), linear-gradient(145deg, #202020, #0b0b0b 60%);
-  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.4), 0 0 22px rgba(255, 90, 54, 0.09), inset 0 1px 0 rgba(255, 201, 173, 0.35);
+  box-shadow: 0 22px 52px rgba(0, 0, 0, 0.48), 0 0 32px rgba(255, 90, 54, 0.07), inset 0 1px 0 rgba(255, 201, 173, 0.35);
 }
 
 .identity {
@@ -165,7 +165,7 @@
 
 @media (max-width: 680px) {
   .section { padding-block: 64px 44px; }
-  .header h2 { font-size: clamp(32px, 8vw, 42px); }
+  .header h2 { font-size: clamp(34px, 8.4vw, 44px); }
   .eyebrow { gap: 14px; font-size: 10px; }
   .subtitle { max-width: 370px; padding-inline: 8px; }
   .deck { --card-width: 82%; height: 456px; margin-top: 18px; perspective: none; }
