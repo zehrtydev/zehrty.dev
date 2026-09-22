@@ -28,7 +28,7 @@ const timelineLogos = {
   unad: { src: "/logos/unad.png", width: 3301, height: 2551 },
   campslands: { src: "/logos/campslands.svg", width: 103, height: 19 },
   ingles: { src: "/logos/ingles.webp", width: 122, height: 64 },
-  petrocasinos: { src: "/logos/petrocasinos.png", width: 200, height: 200 },
+  petrocasinos: { src: "/logos/petrocasinos-oficial.png", width: 200, height: 200 },
 } as const;
 
 function TimelineIcon({ kind }: { kind: (typeof timeline)[number]["icon"] }) {
