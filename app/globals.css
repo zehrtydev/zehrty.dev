@@ -1146,10 +1146,25 @@ main {
   color: var(--accent);
 }
 
-.unad-mark {
-  font-size: 10px;
-  letter-spacing: 0.06em;
-  font-weight: 700;
+.timeline-logo {
+  display: block;
+  object-fit: contain;
+  object-position: center;
+}
+
+.timeline-logo-unad {
+  width: 90%;
+  height: 90%;
+}
+
+.timeline-logo-campslands {
+  width: 88%;
+  height: 52%;
+}
+
+.timeline-logo-ingles {
+  width: 70%;
+  height: 64%;
 }
 
 .timeline-item strong {
@@ -1804,10 +1819,6 @@ main {
     left: clamp(30px, 2.35vw, 45px);
     top: 32px;
     bottom: 40px;
-  }
-
-  .unad-mark {
-    font-size: clamp(12px, 0.95vw, 18px);
   }
 
   .timeline-item strong {

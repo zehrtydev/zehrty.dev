@@ -1,4 +1,5 @@
-import { FiBookOpen, FiBriefcase, FiCode } from "react-icons/fi";
+import Image from "next/image";
+import { FiBriefcase } from "react-icons/fi";
 import { DeveloperPortrait } from "./DeveloperPortrait";
 
 const timeline = [
@@ -8,12 +9,12 @@ const timeline = [
     text: "Ingeniería de Sistemas",
   },
   {
-    icon: "code",
+    icon: "campslands",
     title: "Programación e Inteligencia Artificial",
     text: "Formación simultánea",
   },
   {
-    icon: "book",
+    icon: "ingles",
     title: "Inglés en curso",
     text: "Español nativo · Inglés B+ en formación hacia C1",
   },
@@ -24,11 +25,23 @@ const timeline = [
   },
 ] as const;
 
-function TimelineIcon({ kind }: { kind: string }) {
-  if (kind === "unad") return <span className="unad-mark">UNAD</span>;
-  if (kind === "code") return <FiCode />;
-  if (kind === "book") return <FiBookOpen />;
-  return <FiBriefcase />;
+const timelineLogos = {
+  unad: { src: "/logos/unad.png", width: 3301, height: 2551 },
+  campslands: { src: "/logos/campslands.svg", width: 103, height: 19 },
+  ingles: { src: "/logos/ingles.webp", width: 122, height: 64 },
+} as const;
+
+function TimelineIcon({ kind }: { kind: (typeof timeline)[number]["icon"] }) {
+  if (kind === "work") return <FiBriefcase />;
+
+  return (
+    <Image
+      {...timelineLogos[kind]}
+      className={`timeline-logo timeline-logo-${kind}`}
+      alt=""
+      sizes="(min-width: 1181px) 80px, 52px"
+    />
+  );
 }
 
 export function AboutSection() {
