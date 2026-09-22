@@ -4,13 +4,13 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Zehrtydev — Manuel Amado | Desarrollo y Automatización",
+  title: "Zehrtydev - Manuel Amado | Desarrollo y Automatización",
   description:
     "Manuel Amado, Zehrtydev. Desarrollo de productos digitales, automatización y software útil para problemas reales.",
   metadataBase: new URL("https://zehrty.dev"),
   icons: { icon: "/favicon.svg" },
   openGraph: {
-    title: "Zehrtydev — Manuel Amado",
+    title: "Zehrtydev - Manuel Amado",
     description:
       "Productos digitales, automatización y software útil construido por Manuel Amado.",
     url: "https://zehrty.dev",

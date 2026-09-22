@@ -3,26 +3,24 @@ import {
   SiTypescript,
   SiPostgresql,
   SiDocker,
-  SiLinux,
-  SiGit,
+  SiNextdotjs,
+  SiSupabase,
 } from "react-icons/si";
-import { FiCloud, FiLink2 } from "react-icons/fi";
 
 const items = [
-  [SiNodedotjs, "Node.js"],
   [SiTypescript, "TypeScript"],
+  [SiNextdotjs, "Next.js"],
+  [SiNodedotjs, "Node.js"],
   [SiPostgresql, "PostgreSQL"],
   [SiDocker, "Docker"],
-  [FiCloud, "AWS"],
-  [SiLinux, "Linux"],
-  [SiGit, "Git"],
-  [FiLink2, "APIs"],
+  [SiSupabase, "Supabase"],
 ] as const;
 
 export function TechStrip() {
   return (
     <div className="tech-strip">
-      <div className="tech-grid shell" aria-label="Tecnologías">
+      <div className="tech-grid shell" aria-label="Stack principal">
+        <span className="tech-strip-label">STACK PRINCIPAL</span>
         {items.map(([Icon, label]) => (
           <div className="tech-item" key={label}>
             <Icon aria-hidden="true" />

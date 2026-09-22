@@ -350,7 +350,16 @@ main {
 .tech-grid {
   min-height: 78px;
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: auto repeat(6, minmax(0, 1fr));
+  align-items: center;
+}
+
+.tech-strip-label {
+  padding-right: 24px;
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
 }
 
 .tech-item {
@@ -1983,8 +1992,25 @@ main {
   }
 
   .tech-grid {
-    overflow-x: auto;
-    grid-template-columns: repeat(8, 135px);
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 20px 0;
+    padding-block: 18px;
+  }
+
+  .tech-strip-label {
+    grid-column: 1 / -1;
+    padding: 0;
+    text-align: center;
+  }
+
+  .tech-item {
+    gap: 8px;
+    font-size: 11px;
+  }
+
+  .tech-item svg {
+    width: 24px;
+    height: 24px;
   }
 
   .product-section {
@@ -2038,6 +2064,16 @@ main {
 }
 
 @media (max-width: 680px) {
+  .tech-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    row-gap: 22px;
+    padding-block: 22px;
+  }
+
+  .tech-item:nth-child(4)::after {
+    display: none;
+  }
+
   :root {
     --shell: min(calc(100vw - 28px), 620px);
   }
