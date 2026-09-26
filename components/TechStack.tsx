@@ -22,9 +22,9 @@ export function TechStack() {
   const touchStart = useRef<{ x: number; y: number; id: number } | null>(null);
   const suppressClick = useRef(false);
 
-  function select(index: number, focusCard = false) {
+  function select(index: number, focusCard = false, timestamp = 0) {
     const next = normalize(index);
-    hoverAfter.current = performance.now() + 560;
+    hoverAfter.current = timestamp + 560;
     setActiveIndex(next);
     if (focusCard) {
       sectionRef.current?.querySelector<HTMLButtonElement>(
@@ -38,7 +38,9 @@ export function TechStack() {
     const moved = event.clientX !== lastPointer.current.x || event.clientY !== lastPointer.current.y;
     lastPointer.current = { x: event.clientX, y: event.clientY };
     // Moving cards must never trigger another selection beneath a stationary cursor.
-    if (moved && performance.now() >= hoverAfter.current && index !== activeIndex) select(index);
+    if (moved && event.timeStamp >= hoverAfter.current && index !== activeIndex) {
+      select(index, false, event.timeStamp);
+    }
   }
 
   function onKeyDown(event: KeyboardEvent<HTMLElement>) {
@@ -49,7 +51,7 @@ export function TechStack() {
     if (!(event.key in targets) || event.altKey || event.ctrlKey || event.metaKey) return;
     event.preventDefault();
     const onCard = (event.target as HTMLElement).closest("[data-technology]") !== null;
-    select(targets[event.key], onCard);
+    select(targets[event.key], onCard, event.timeStamp);
   }
 
   function onPointerDown(event: PointerEvent<HTMLDivElement>) {
@@ -66,7 +68,7 @@ export function TechStack() {
     const dy = event.clientY - start.y;
     if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.25) {
       suppressClick.current = true;
-      select(activeIndex + (dx < 0 ? 1 : -1));
+      select(activeIndex + (dx < 0 ? 1 : -1), false, event.timeStamp);
     }
   }
 
@@ -105,7 +107,7 @@ export function TechStack() {
             key={technology.id}
             technology={technology}
             offset={relativeOffset(index, activeIndex)}
-            onSelect={() => select(index)}
+            onSelect={(event) => select(index, false, event.timeStamp)}
             onPreview={(event) => preview(event, index)}
           />
         ))}
@@ -113,7 +115,7 @@ export function TechStack() {
 
       <div className={`${styles.footer} shell`}>
         <div className={styles.controls} role="group" aria-label="Navegación de tecnologías">
-          <button type="button" className={styles.arrow} onClick={() => select(activeIndex - 1)} aria-label="Tecnología anterior"><FiChevronLeft aria-hidden="true" /></button>
+          <button type="button" className={styles.arrow} onClick={(event) => select(activeIndex - 1, false, event.timeStamp)} aria-label="Tecnología anterior"><FiChevronLeft aria-hidden="true" /></button>
           <div className={styles.indicators}>
             {technologies.map((technology, index) => (
               <button
@@ -122,11 +124,11 @@ export function TechStack() {
                 aria-label={`Ver ${technology.name}`}
                 aria-current={index === activeIndex ? "true" : undefined}
                 className={styles.indicator}
-                onClick={() => select(index)}
+                onClick={(event) => select(index, false, event.timeStamp)}
               ><span /></button>
             ))}
           </div>
-          <button type="button" className={styles.arrow} onClick={() => select(activeIndex + 1)} aria-label="Tecnología siguiente"><FiChevronRight aria-hidden="true" /></button>
+          <button type="button" className={styles.arrow} onClick={(event) => select(activeIndex + 1, false, event.timeStamp)} aria-label="Tecnología siguiente"><FiChevronRight aria-hidden="true" /></button>
         </div>
         <p className={styles.rail}>TECNOLOGÍA AL SERVICIO<br />DE PRODUCTOS REALES.</p>
       </div>

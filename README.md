@@ -4,7 +4,7 @@ Nueva web personal de Manuel Amado / Zehrtydev, construida desde cero con Next.j
 
 ## Stack
 
-- Next.js 15
+- Next.js 16.3.5
 - React 19
 - TypeScript
 - CSS global personalizado
@@ -25,6 +25,16 @@ Abre `http://localhost:3000`.
 npm run build
 npm start
 ```
+
+## Pruebas
+
+```bash
+npm run test
+```
+
+Las pruebas unitarias de componentes se ejecutan con Vitest y React Testing
+Library. Actualmente cubren la navegación, los enlaces de contacto y los CTA
+principales.
 
 ## Contenido
 

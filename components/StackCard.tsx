@@ -1,11 +1,11 @@
-import type { CSSProperties, PointerEvent } from "react";
+import type { CSSProperties, MouseEvent, PointerEvent } from "react";
 import type { Technology } from "./technologies";
 import styles from "./TechStack.module.css";
 
 type Props = {
   technology: Technology;
   offset: number;
-  onSelect: () => void;
+  onSelect: (event: MouseEvent<HTMLButtonElement>) => void;
   onPreview: (event: PointerEvent<HTMLButtonElement>) => void;
 };
 

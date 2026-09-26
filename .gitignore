@@ -9,3 +9,5 @@ yarn-debug.log*
 pnpm-debug.log*
 tsconfig.tsbuildinfo
 next-env.d.ts
+AGENTS.md
+CLAUDE.md
